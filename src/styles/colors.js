@@ -1,4 +1,4 @@
 const colors = {
-    bgColor: "#F8F8F8",
+    bgColor: "#F7EEE5",
 };
 export default colors;

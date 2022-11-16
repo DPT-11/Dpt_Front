@@ -18,6 +18,7 @@ export const MediaDiv = styled.div`
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    background-color: ${colors.bgColor};
     @media screen and (max-width: 768px) {
         width: 100%;
     }
