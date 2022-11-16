@@ -77,13 +77,13 @@ const GlobalStyle = createGlobalStyle`
   ${reset}
   ${customReset}
   @font-face {
-    font-family: 'Noto Sans KR', sans-serif;
-    src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap') format('woff');
+    font-family: 'Gamja Flower';
+    src: url('../src/font/GamjaFlower-Regular.ttf');
     font-weight: 400;
     font-style: normal;
   }
   * {
-    font-family: 'Noto Sans KR', sans-serif !important;
+    font-family: 'Gamja Flower' !important;
     font-style: normal;
     letter-spacing: -0.02em;
     user-select: none;
