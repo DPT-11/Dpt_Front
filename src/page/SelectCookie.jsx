@@ -1,6 +1,9 @@
-import React, { useState } from "react";
-import { useParams, useNavigate, Navigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+
+import { CookieItem } from "../components/selectedCookie";
+
 import Oven from "../assets/oven.png";
 import Cookie_ver_1 from "../assets/cookie_ver_1.svg";
 import Pan from "../assets/pan.png";
@@ -10,21 +13,52 @@ import "./SelectCookie.style.css";
 const SelectCookie = () => {
     const [selectedCookie, setSelectCookie] = useState(null);
     const [buttonState, setButtonstate] = useState(true);
-    const { res } = useState(null);
+    const { res, setRes } = useState([
+        {
+            questionId: 1,
+            question: "무슨 영화",
+            options: ["멜로", "스릴러", "코미디"], //예시 답안
+        },
+        {
+            questionId: 2,
+            question: "무슨 노래",
+            options: ["", ""],
+        },
+    ]);
 
     const { token } = useParams();
     const navigator = useNavigate();
 
+    useEffect(() => {
+        console.log(selectedCookie);
+    }, [selectedCookie]);
+
     const sendCookieData = () => {
         //TODO 쿠키 설정 API 연결
-        axios.post({ token: token, cookieId: selectedCookie }).then((res) => {
-            res = { ...res.data };
-        });
+        // axios.post({ token: token, cookieId: selectedCookie }).then((res) => {
+        //     res = { ...res.data };
+        // });
         setTimeout(() => {
             setButtonstate(false);
         }, 1000);
         setTimeout(() => {
-            navigator("/");
+            navigator(`/${token}/question`, {
+                state: {
+                    res: [
+                        {
+                            questionId: 1,
+                            question: "무슨 영화",
+                            options: ["멜로", "스릴러", "코미디"], //예시 답안
+                        },
+                        {
+                            questionId: 2,
+                            question: "무슨 노래",
+                            options: ["", ""],
+                        },
+                    ],
+                    cookieId: selectedCookie,
+                },
+            });
         }, 7000);
     };
 
@@ -80,24 +114,27 @@ const SelectCookie = () => {
                 className="oven-pan-container"
                 style={{ backgroundImage: `url(${Pan})` }}
             >
-                <img
+                <CookieItem
                     className="cookie-item cookie-first"
                     src={Cookie_ver_1}
+                    selected={selectedCookie === null || selectedCookie === 1}
                     onClick={() => setSelectCookie(1)}
-                ></img>
-                <img
+                />
+                <CookieItem
                     className="cookie-item cookie-second"
                     src={Cookie_ver_1}
+                    selected={selectedCookie === null || selectedCookie === 2}
                     onClick={() => setSelectCookie(2)}
-                ></img>
-                <img
+                />
+                <CookieItem
                     className="cookie-item cookie-third"
                     src={Cookie_ver_1}
+                    selected={selectedCookie === null || selectedCookie === 3}
                     onClick={() => setSelectCookie(3)}
-                ></img>
+                />
             </div>
             <button
-                disabled={!buttonState}
+                disabled={!buttonState || selectedCookie == null}
                 style={{
                     fontSize: `1.2rem`,
                     color: "black",
@@ -109,9 +146,14 @@ const SelectCookie = () => {
                     animateCSS(".oven", "oven");
                     animateCSS(".cookie-select-title", "title");
                     sendCookieData(selectedCookie);
+                    setButtonstate(false);
                 }}
             >
-                {buttonState ? "쿠키 선택 완료" : ""}
+                {selectedCookie !== null
+                    ? buttonState
+                        ? "쿠키 선택 완료"
+                        : ""
+                    : "쿠키를 선택해주세요"}
             </button>
         </div>
     );
