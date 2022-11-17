@@ -149,11 +149,7 @@ const SelectCookie = () => {
                     setButtonstate(false);
                 }}
             >
-                {selectedCookie !== null
-                    ? buttonState
-                        ? "쿠키 선택 완료"
-                        : ""
-                    : "쿠키를 선택해주세요"}
+                {selectedCookie !== null ? (buttonState ? "확인" : "") : "확인"}
             </button>
         </div>
     );

@@ -22,6 +22,10 @@ const Home = () => {
 
     const navigator = useNavigate();
 
+    const onClickGotoCreate = () => {
+        navigator("/create");
+    };
+
     useEffect(() => {}, [focusStep]);
     useEffect(() => {
         setFirstState(false);
@@ -100,18 +104,14 @@ const Home = () => {
                     <div style={{ width: "70%", marginTop: "5vh" }}>
                         <MainButton
                             text={"퀴즈생성하기"}
-                            onClick={() => {
-                                navigator.push("/create");
-                            }}
+                            onClick={onClickGotoCreate}
                         />
                     </div>
 
                     <div style={{ width: "70%", marginTop: "3vh" }}>
                         <MainButton
                             text={"내 쿠키 보러가기"}
-                            onClick={() => {
-                                navigator.push("/");
-                            }}
+                            onClick={onClickGotoCreate}
                         />
                     </div>
                 </div>
