@@ -1,5 +1,6 @@
 import { createGlobalStyle, css } from "styled-components";
 import reset from "styled-reset";
+import colors from "./colors";
 
 
 const customReset = css`
@@ -78,15 +79,13 @@ const GlobalStyle = createGlobalStyle`
   ${reset}
   ${customReset}
   @font-face {
-    font-family: 'Noto Sans KR', sans-serif;
-    src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap') format('woff');
+    font-family: 'Gamja Flower', cursive !important;
+    src: url('../src/font/GamjaFlower-Regular.ttf') format('ttf'),url('../src/font/GamjaFlower-Regular.woff') format('woff'),url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
     font-weight: 400;
     font-style: normal;
   }
-  @font-face{
-    fontFamily: 'Gamja Flower', cursive;
-    src : url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Noto+Sans+KR&display=swap');
-    font-weight: 400;
+  * {
+    font-family: 'Gamja Flower' , cursive !important;
     font-style: normal;
   }
   * {
@@ -99,6 +98,7 @@ const GlobalStyle = createGlobalStyle`
 
   .container {
     padding: 0 20px;
+    background-color: ${colors.bgColor};
   }
 `;
 
