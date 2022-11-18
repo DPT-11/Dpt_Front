@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+//import axios from "axios";
 
 import { CookieItem } from "../components/selectedCookie";
 import { SecondButton } from "../components/button";

@@ -2,6 +2,7 @@ import { createGlobalStyle, css } from "styled-components";
 import reset from "styled-reset";
 import colors from "./colors";
 
+
 const customReset = css`
     *,
     *::before,
@@ -93,6 +94,8 @@ const GlobalStyle = createGlobalStyle`
     //font-family: 'NanumSeHwaCe'  !important;
     font-family: 'Gamja Flower', cursive !important; 
     font-style: normal;
+  }
+  * {
     letter-spacing: -0.02em;
     user-select: none;
     -webkit-touch-callout: none;
