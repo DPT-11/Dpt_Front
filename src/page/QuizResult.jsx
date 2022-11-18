@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-
 import "animate.css";
-import { StyledContainer } from "./Question.style.js";
+
+import { StyledContainer } from "./Home.style.js";
 import ResultCookie from "../assets/santa_cookie.svg";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -41,7 +40,6 @@ const QuizResult = () => {
     const url = `${baseUrl}/quiz/${token}`;
     return (
         <StyledContainer>
-            <div></div>
             <Decoration />
             <h1>퀴즈 준비 완료</h1>
             <img
@@ -54,6 +52,7 @@ const QuizResult = () => {
             <div
                 style={{
                     width: "70%",
+                    height: "30%",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "center",
@@ -78,14 +77,5 @@ const QuizResult = () => {
         </StyledContainer>
     );
 };
-
-function success(nodeOrMsg) {
-    return toast(
-        <div style={{ display: "flex", gap: "5px" }}>
-            {/* // <img src={CopyIc} /> */}
-            <div>{nodeOrMsg}</div>
-        </div>
-    );
-}
 
 export default QuizResult;
