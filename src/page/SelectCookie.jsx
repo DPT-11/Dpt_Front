@@ -8,8 +8,12 @@ import { SecondButton } from "../components/button";
 import Oven from "../assets/oven.png";
 import Cookie_ver_1 from "../assets/cookie_ver_1.svg";
 import Pan from "../assets/pan.png";
+import Left from "../assets/left_glove.png";
+import Right from "../assets/right_glove.png";
+
 import "animate.css";
 import "./SelectCookie.style.css";
+import { DefaultLayout } from "../styles/common";
 
 const SelectCookie = () => {
     const [selectedCookie, setSelectCookie] = useState(null);
@@ -32,7 +36,8 @@ const SelectCookie = () => {
 
     useEffect(() => {
         console.log(selectedCookie);
-    }, [selectedCookie]);
+        console.log("buttonState", buttonState);
+    }, [selectedCookie, buttonState]);
 
     const sendCookieData = () => {
         //TODO 쿠키 설정 API 연결
@@ -111,66 +116,84 @@ const SelectCookie = () => {
         });
 
     return (
-        <div className="container">
-            <h1
-                className="cookie-select-title"
-                style={{
-                    fontSize: `2rem`,
-                    color: "black",
-                    padding: "1.5rem",
-                }}
-            >
-                {buttonState ? "어떤 쿠키를 만들까요?" : "오븐 예열 중..."}
-            </h1>
-            <img className="oven" src={Oven}></img>
-            <div
-                draggable={true}
-                className="oven-pan-container"
-                style={{ backgroundImage: `url(${Pan})` }}
-            >
-                <CookieItem
-                    className="cookie-item cookie-first"
-                    src={Cookie_ver_1}
-                    selected={selectedCookie === null || selectedCookie === 1}
-                    onClick={() => setSelectCookie(1)}
-                />
-                <CookieItem
-                    className="cookie-item cookie-second"
-                    src={Cookie_ver_1}
-                    selected={selectedCookie === null || selectedCookie === 2}
-                    onClick={() => setSelectCookie(2)}
-                />
-                <CookieItem
-                    className="cookie-item cookie-third"
-                    src={Cookie_ver_1}
-                    selected={selectedCookie === null || selectedCookie === 3}
-                    onClick={() => setSelectCookie(3)}
-                />
-            </div>
-            <div
-                style={{
-                    width: "20%",
-                    visibility: `${
-                        !buttonState && selectedCookie ? "hidden" : "none"
-                    }`,
-                }}
-            >
-                <SecondButton
-                    text={"확인"}
-                    disabled={!buttonState || selectedCookie == null}
-                    onClick={() => {
-                        setButtonstate(false);
-                        setTimeout(() => {
-                            animateCSS(".oven-pan-container", "pan");
-                            animateCSS(".cookie-item", "pan");
-                            animateCSS(".oven", "oven");
-                            animateCSS(".cookie-select-title", "title");
-                            sendCookieData(selectedCookie);
-                        }, 500);
+        <DefaultLayout>
+            <div className="container">
+                <h1
+                    className="cookie-select-title"
+                    style={{
+                        fontSize: `2rem`,
+                        color: "black",
+                        padding: "1.5rem",
                     }}
-                />
+                >
+                    {buttonState ? "어떤 쿠키를 만들까요?" : "오븐 예열 중..."}
+                </h1>
+                <img className="oven" src={Oven}></img>
+                <div
+                    draggable={true}
+                    className="oven-pan-container"
+                    style={{ backgroundImage: `url(${Pan})` }}
+                >
+                    <CookieItem
+                        className="cookie-item cookie-first"
+                        src={Cookie_ver_1}
+                        selected={
+                            selectedCookie === null || selectedCookie === 1
+                        }
+                        onClick={() => setSelectCookie(1)}
+                    />
+                    <CookieItem
+                        className="cookie-item cookie-second"
+                        src={Cookie_ver_1}
+                        selected={
+                            selectedCookie === null || selectedCookie === 2
+                        }
+                        onClick={() => setSelectCookie(2)}
+                    />
+                    <CookieItem
+                        className="cookie-item cookie-third"
+                        src={Cookie_ver_1}
+                        selected={
+                            selectedCookie === null || selectedCookie === 3
+                        }
+                        onClick={() => setSelectCookie(3)}
+                    />
+                </div>
+
+                <div
+                    style={{
+                        width: "20%",
+                        zIndex: "100",
+                        visibility: `${
+                            !buttonState && selectedCookie ? "hidden" : "none"
+                        }`,
+                    }}
+                >
+                    <SecondButton
+                        text={"확인"}
+                        disabled={!buttonState || selectedCookie == null}
+                        onClick={() => {
+                            setButtonstate(false);
+                            setTimeout(() => {
+                                animateCSS(".glove-container", "glove");
+                            }, 500);
+                            setTimeout(() => {
+                                animateCSS(".oven-pan-container", "pan");
+                                animateCSS(".cookie-item", "pan");
+                                animateCSS(".oven", "oven");
+                                animateCSS(".cookie-select-title", "title");
+
+                                sendCookieData(selectedCookie);
+                            }, 1500);
+                        }}
+                    />
+                </div>
+                <div className="glove-container">
+                    <img className="glove" src={Left} />
+                    <img className="glove" src={Right} />
+                </div>
             </div>
-        </div>
+        </DefaultLayout>
     );
 };
 
