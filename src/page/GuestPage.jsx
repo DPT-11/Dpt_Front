@@ -1,6 +1,7 @@
 import React from 'react';
 import KjwStart from './../components/kjwStart';
 
+
 function GuestPage(){
     return(
         <div className='kjw_body'>

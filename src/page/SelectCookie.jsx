@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+//import axios from "axios";
 
 import { CookieItem } from "../components/selectedCookie";
 
 import Oven from "../assets/oven.png";
 import Cookie_ver_1 from "../assets/cookie_ver_1.svg";
 import Pan from "../assets/pan.png";
-import "animate.css";
+//import "animate.css";
 import "./SelectCookie.style.css";
 
 const SelectCookie = () => {

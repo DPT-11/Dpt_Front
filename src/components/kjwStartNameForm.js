@@ -20,29 +20,21 @@ function KjwStartNameForm(props) {
         marginBottom:"24px",
         textAlign:"center"
     }
-    // const buttonCss = {
-    //     width:"127px",
-    //     height:"50px",
-    //     backgroundColor: "#ffffff",
-    //     borderRadius:"20px",
-    //     fontFamily: "'Gamja Flower', cursive",
-    //     fontSize: "24px",
-    //     color: "#D43C2F",
-    //     marginBottom:"49px",
-    //     textAlign:"center"
-    // }
     
-    const navigate = useNavigate();
+    const navigator = useNavigate();
     const [input, setInput] = useState("");
     const submit=(event)=>{
         event.preventDefault();
-        const name = document.getElementById('name').value;
-        navigate("/guest?name="+name);
     }
     const setInputListener = (e) =>{
         setInput(e.target.value);
     }
+    const goToQuiz = () => {
+        const name = input;
+        navigator("/guest/quizPlay?name="+name);
+    }
 
+    /*<button className="kjwStartBtn" disabled={!input}>시작</button> */
     return(
         <form onSubmit={submit} style={formCss}>
             <input 
@@ -50,7 +42,7 @@ function KjwStartNameForm(props) {
                 onChange={e => setInputListener(e)}
                 style={inputCss}
                 type="text" placeholder={props.placeholder} required/>
-            <button className="kjwStartBtn" disabled={!input}>시작</button>
+            <button className="kjwStartBtn" disabled={!input} onClick={goToQuiz}>시작</button>
         </form>
     );
 }
