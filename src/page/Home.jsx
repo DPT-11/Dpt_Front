@@ -23,6 +23,7 @@ const Home = () => {
     const navigator = useNavigate();
 
     const onClickGotoCreate = () => {
+        //TODO API 호출
         navigator("/create");
     };
 

@@ -9,7 +9,6 @@ const ProgressBar = ({ curStep }) => {
     );
     const step = [true, false, false, false, false];
     useEffect(() => {
-        console.log("progressBar" + curStep);
         if (curStep < 5) setProgress(curStep);
     }, [curStep]);
     return (

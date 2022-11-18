@@ -1,5 +1,5 @@
 import React from "react";
-import DecorationImg from "../../assets/decoration.svg";
+import DecorationImg from "../../assets/decoration.png";
 
 import styled from "styled-components";
 

@@ -126,6 +126,12 @@ export const StyledContainer = styled.div`
         margin-bottom: 24px;
         animation: ${textScale} 1s;
     }
+
+    h2 {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 38px;
+    }
 `;
 
 export const AnimateText = styled.p`
