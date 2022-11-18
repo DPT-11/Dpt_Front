@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import {
-    AnimatCookieImg
-} from "../page/Home.style";
+import resultCookie from "../img/cookie1.png";
 
 function KjwResultCookie(){
     const [ovenState, setOvenState] = useState(false);
     return (
-        <AnimatCookieImg
-            style={{ display: `${ovenState ? "" : "none"}` }}
-        />
+        <div style={{alignItem:"center"}}>
+            <img src={resultCookie} alt="쿠키 결과"/>
+        </div>
     );
 }
 

@@ -5,9 +5,9 @@ import {
 import KjwImgHeader from "./kjwImgHeader";
 import KjwResultCookie from "./kjwResultCookie";
 import resultCookie from "../img/cookie1.png";
-import KjwKaKao from "./kjwKaKao";
-import KjwCopy from "./kjwCopy";
-import KjwGotoHome from "./kjwGotoHome";
+import KjwButtonCopy from "./kjwButtonCopy";
+import KjwButtonKakao from "./kjwButtonKakao";
+import KjwButtonGotoHome from "./kjwButtonGotoHome";
 
 function KjwResult(props){
     return (
@@ -17,11 +17,11 @@ function KjwResult(props){
             <img src={resultCookie}/>
             <span style={{height:"38px", fontSize:"24px", marginTop:"57px", marginBottom:"13px"}}>5개중 {props.result}개 정답!</span>
             <span style={{height:"38px", fontSize:"20px", marginBottom:"27px"}}>친구에게 링크를 공유해보세요!</span>
-            <KjwCopy/>
+            <KjwButtonCopy/>
             <span style={{height:"19px"}}/>
-            <KjwKaKao name={props.name} result={props.result}/>
+            <KjwButtonKakao name={props.name} result={props.result}/>
             <span style={{height:"49px"}}/>
-            <KjwGotoHome />
+            <KjwButtonGotoHome />
         </>
     );
 }

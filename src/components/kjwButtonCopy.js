@@ -1,6 +1,6 @@
 import { CopyButton } from "./button";
 
-function KjwCopy() {
+function KjwButtonCopy() {
     const handleCopyClipBoard = async () => {
         try {
             let url = window.document.location.href;
@@ -18,4 +18,4 @@ function KjwCopy() {
     );
 }
 
-export default KjwCopy;
+export default KjwButtonCopy;

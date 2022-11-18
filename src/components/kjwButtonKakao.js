@@ -1,6 +1,6 @@
 import { KakaoSahreButton } from "./button";
 
-function KjwKaKao(props){
+function KjwButtonKakao(props){
     const OnHandleShareKaKao = () => {
         if(!window.Kakao.isInitialized())
             window.Kakao.init('b89e1bf0d9c73149ca2c957e3ee0185a')
@@ -35,4 +35,4 @@ function KjwKaKao(props){
         </>
     );
 }
-export default KjwKaKao;
+export default KjwButtonKakao;

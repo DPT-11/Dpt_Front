@@ -1,5 +1,6 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
+import KjwQuizing from '../components/kwjQuizing';
 
 function QuizPlay() {
     const navigator = useNavigate();
@@ -14,7 +15,7 @@ function QuizPlay() {
     return(
         <div className='kjw_body'>
             <div className='kjw_main'>
-                퀴즈 페이지 입니다.
+                <KjwQuizing name={name}/>
                 <button onClick={goToResult}>결과페이지 이동</button>
             </div>
         </div>

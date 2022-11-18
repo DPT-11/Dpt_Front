@@ -46,3 +46,15 @@ font-family: 'Noto Sans KR', sans-serif;*/
     background-color: #ffffff;
     color: #D43C2F;
 }
+
+.kjwQuizingBtn{
+    width: 352px;
+    height: 50px;
+    background-color: #ffffff00;
+    border: solid 1px #B3ACAC;
+    border-radius: 30px;
+    font-family: "'Gamja Flower', cursive";
+    font-size:25px;
+    color:"black";
+    text-align:"center";
+}

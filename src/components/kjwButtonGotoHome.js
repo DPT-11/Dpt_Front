@@ -1,7 +1,7 @@
 import home from "../assets/home.png";
 import { useNavigate } from 'react-router-dom';
 
-function KjwGotoHome() {
+function KjwButtonGotoHome() {
     const navigator = useNavigate();
     const goToHome=()=>{
         navigator("/guest");
@@ -12,4 +12,4 @@ function KjwGotoHome() {
         </>
     );
 }
-export default KjwGotoHome;
+export default KjwButtonGotoHome;
