@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import { CookieItem } from "../components/selectedCookie";
+import { SecondButton } from "../components/button";
 
 import Oven from "../assets/oven.png";
 import Cookie_ver_1 from "../assets/cookie_ver_1.svg";
@@ -48,12 +49,27 @@ const SelectCookie = () => {
                         {
                             questionId: 1,
                             question: "무슨 영화",
-                            options: ["멜로", "스릴러", "코미디"], //예시 답안
+                            options: ["멜로1", "스릴러", "코미디"], //예시 답안
                         },
                         {
                             questionId: 2,
-                            question: "무슨 노래",
-                            options: ["", ""],
+                            question: "무슨 노래1",
+                            options: ["멜로2", "스릴러", "코미디"],
+                        },
+                        {
+                            questionId: 3,
+                            question: "무슨 노래3",
+                            options: ["멜로3", "스릴러", "코미디"],
+                        },
+                        {
+                            questionId: 4,
+                            question: "무슨 노래4",
+                            options: ["멜로4", "스릴러", "코미디"],
+                        },
+                        {
+                            questionId: 5,
+                            question: "무슨 노래5",
+                            options: ["멜로5", "스릴러", "코미디"],
                         },
                     ],
                     cookieId: selectedCookie,
@@ -63,7 +79,6 @@ const SelectCookie = () => {
     };
 
     const animateCSS = (element, animation, prefix = "animate__") =>
-        // We create a Promise and return it
         new Promise((resolve, reject) => {
             const animationName = `${prefix}${animation}`;
             const nodes = document.querySelectorAll(element);
@@ -71,7 +86,6 @@ const SelectCookie = () => {
                 node.classList.add(`${prefix}animated`, animationName);
             });
 
-            // When the animation ends, we clean the classes and resolve the Promise
             function handleAnimationEnd(event) {
                 console.log(event);
                 if (animation === "oven__fadeOut") {
@@ -101,12 +115,12 @@ const SelectCookie = () => {
             <h1
                 className="cookie-select-title"
                 style={{
-                    fontSize: `1.6rem`,
+                    fontSize: `2rem`,
                     color: "black",
                     padding: "1.5rem",
                 }}
             >
-                {buttonState ? "어떤 쿠키를 구울까요?" : "오븐 예열 중..."}
+                {buttonState ? "어떤 쿠키를 만들까요?" : "오븐 예열 중..."}
             </h1>
             <img className="oven" src={Oven}></img>
             <div
@@ -133,24 +147,29 @@ const SelectCookie = () => {
                     onClick={() => setSelectCookie(3)}
                 />
             </div>
-            <button
-                disabled={!buttonState || selectedCookie == null}
+            <div
                 style={{
-                    fontSize: `1.2rem`,
-                    color: "black",
-                    padding: "1.5rem",
-                }}
-                onClick={() => {
-                    animateCSS(".oven-pan-container", "pan");
-                    animateCSS(".cookie-item", "pan");
-                    animateCSS(".oven", "oven");
-                    animateCSS(".cookie-select-title", "title");
-                    sendCookieData(selectedCookie);
-                    setButtonstate(false);
+                    width: "20%",
+                    visibility: `${
+                        !buttonState && selectedCookie ? "hidden" : "none"
+                    }`,
                 }}
             >
-                {selectedCookie !== null ? (buttonState ? "확인" : "") : "확인"}
-            </button>
+                <SecondButton
+                    text={"확인"}
+                    disabled={!buttonState || selectedCookie == null}
+                    onClick={() => {
+                        setButtonstate(false);
+                        setTimeout(() => {
+                            animateCSS(".oven-pan-container", "pan");
+                            animateCSS(".cookie-item", "pan");
+                            animateCSS(".oven", "oven");
+                            animateCSS(".cookie-select-title", "title");
+                            sendCookieData(selectedCookie);
+                        }, 500);
+                    }}
+                />
+            </div>
         </div>
     );
 };
