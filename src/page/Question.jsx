@@ -6,16 +6,20 @@ import axios from "axios";
 import QuestionHat from "../assets/questionHat.svg";
 
 import ProgressBar from "../components/progress/index";
-
-import { StyledContainer } from "./Home.style";
-import { DefaultLayout } from "../styles/common";
-import { AnswerWrapper, QuestionWrapper } from "./Question.style";
+import { Toast } from "../components/toast";
+import {
+    AnswerWrapper,
+    QuestionWrapper,
+    StyledQuestionContainer,
+} from "./Question.style";
 import {
     AddButton,
     AnswerButton,
     SecondButton,
 } from "../components/button/index";
 import { AnswerInputField } from "../components/inputField/index";
+import { ToastContainer } from "react-toastify";
+import { StyledToastContainer } from "../components/toast/index";
 
 const Question = () => {
     const { state } = useLocation();
@@ -26,6 +30,7 @@ const Question = () => {
     const [options, setOptions] = useState(state.res.map((res) => res.options));
     const [ownAnswer, setOwnAnswer] = useState("");
     const [limitState, setLimitstate] = useState(false);
+    const [waitTime, setWaitTime] = useState(false);
 
     const { token } = useParams();
     const navigator = useNavigate();
@@ -53,8 +58,7 @@ const Question = () => {
         const newArray = [...options];
         newArray[focusStep] = changeOption;
 
-        if (changeOption.length === 2) setLimitstate(true);
-        console.log("after - delete", newArray);
+        if (changeOption.length <= 2) setLimitstate(true);
 
         setOptions(newArray);
     };
@@ -71,6 +75,22 @@ const Question = () => {
             newArray[focusStep] = option;
         }
         setAnswerState(newArray);
+
+        console.log(options[focusStep]);
+        if (
+            focusStep < 4 &&
+            options[focusStep].filter((f) => f !== "").length >= 2
+        ) {
+            console.log(options[focusStep]);
+            setWaitTime(true);
+            setTimeout(() => {
+                setFocusStep((prev) => prev + 1);
+                setWaitTime(false);
+            }, 1500);
+        } else if (options[focusStep].filter((f) => f !== "").length == 1) {
+            Toast("답변은 두개 이상입니다!");
+        }
+        filterAnswer();
     };
     const onClickAdd = () => {
         const newOption = [...options];
@@ -86,92 +106,95 @@ const Question = () => {
         setOptions(newArray);
     };
 
-    return (
-        <DefaultLayout>
-            <StyledContainer>
-                <h2 style={{ marginTop: "2rem", padding: "3rem" }}>
-                    {name}님의 Quiz
-                </h2>
-                <QuestionWrapper>
-                    {questions[focusStep]}
-                    <img src={QuestionHat}></img>
-                </QuestionWrapper>
-                <div style={{ padding: "2rem" }}>
-                    <ProgressBar curStep={focusStep} />
-                </div>
-                {/* {(answerState.length> focusStep+1 ) && focusStep == ques} */}
-                <AnswerWrapper>
-                    {options[focusStep].map((opt, idx) => {
-                        if (opt !== "")
-                            return (
-                                <AnswerButton
-                                    key={idx}
-                                    text={opt}
-                                    checkListener={onClickAnswer}
-                                    deleteListener={onClickDelete}
-                                    isAnswered={
-                                        answerState.length < focusStep + 1
-                                            ? null
-                                            : answerState[focusStep]
-                                    }
-                                    limit={limitState}
-                                />
-                            );
-                        else {
-                            return (
-                                <AnswerInputField
-                                    key={idx}
-                                    hint={"나만의 답안"}
-                                    submitListener={setOwnAnswer}
-                                />
-                            );
-                        }
-                    })}
-                    <AddButton
-                        onClick={onClickAdd}
-                        isVisible={options[focusStep].length < 5}
-                    />
-                </AnswerWrapper>
+    const onClickProgressItem = (step) => {
+        console.log(step);
+        console.log("focusStep", focusStep);
+        if (step < focusStep) {
+            //이전
+            if (focusStep > 0) {
+                filterAnswer();
+                setFocusStep((prev) => prev - 1);
+            }
+        } else if (step > focusStep) {
+            if (focusStep < 4 && answerState.length > focusStep) {
+                filterAnswer();
+                setFocusStep((prev) => prev + 1);
+            }
+        }
+    };
 
-                <button
+    return (
+        <StyledQuestionContainer
+            style={{ pointerEvents: `${waitTime ? "none" : "auto"}` }}
+        >
+            <h2 style={{ marginTop: "2rem", padding: "3rem" }}>
+                {name}님의 Quiz
+            </h2>
+            <QuestionWrapper>
+                {questions[focusStep]}
+                <img src={QuestionHat}></img>
+            </QuestionWrapper>
+            <div style={{ padding: "2rem" }}>
+                <ProgressBar
+                    curStep={focusStep}
+                    itemListener={onClickProgressItem}
+                />
+            </div>
+            {/* {(answerState.length> focusStep+1 ) && focusStep == ques} */}
+            <AnswerWrapper>
+                {options[focusStep].map((opt, idx) => {
+                    if (opt !== "")
+                        return (
+                            <AnswerButton
+                                key={idx}
+                                text={opt}
+                                checkListener={onClickAnswer}
+                                deleteListener={onClickDelete}
+                                isAnswered={
+                                    answerState.length < focusStep + 1
+                                        ? null
+                                        : answerState[focusStep]
+                                }
+                                limit={limitState}
+                            />
+                        );
+                    else {
+                        return (
+                            <AnswerInputField
+                                key={idx}
+                                hint={"나만의 답안"}
+                                submitListener={setOwnAnswer}
+                            />
+                        );
+                    }
+                })}
+                <AddButton
+                    onClick={onClickAdd}
+                    isVisible={options[focusStep].length < 5}
+                />
+            </AnswerWrapper>
+            <StyledToastContainer />
+            <div
+                style={{
+                    position: "absolute",
+                    bottom: "5%",
+                    width: "20%",
+                    visibility: `${
+                        answerState.length === 5 && focusStep === 4
+                            ? "visible"
+                            : "hidden"
+                    }`,
+                }}
+            >
+                <SecondButton
+                    text={"완료"}
+                    disabled={false}
                     onClick={() => {
-                        if (focusStep < 4 && answerState.length > focusStep) {
-                            filterAnswer();
-                            setFocusStep((prev) => prev + 1);
-                        }
+                        navigator(`/${token}/share`);
                     }}
-                >
-                    Next
-                </button>
-                <button
-                    onClick={() => {
-                        if (focusStep > 0) setFocusStep((prev) => prev - 1);
-                    }}
-                >
-                    Prev
-                </button>
-                <div
-                    style={{
-                        position: "absolute",
-                        bottom: "0%",
-                        width: "20%",
-                        visibility: `${
-                            answerState.length === 5 && focusStep === 4
-                                ? "visible"
-                                : "hidden"
-                        }`,
-                    }}
-                >
-                    <SecondButton
-                        text={"완료"}
-                        disabled={false}
-                        onClick={() => {
-                            navigator(`/${token}/share`);
-                        }}
-                    />
-                </div>
-            </StyledContainer>
-        </DefaultLayout>
+                />
+            </div>
+        </StyledQuestionContainer>
     );
 };
 

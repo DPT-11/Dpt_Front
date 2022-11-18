@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import colors from "../../styles/colors";
 import Xbutton from "../../assets/x.svg";
+import HomeImg from "../../assets/home.png";
+
 export const StyledMainButton = styled.button`
-    z-index: 5;
+    z-index: 100;
     background-color: white;
     border-radius: 20px;
     color: ${colors.mainRed};
@@ -10,31 +12,36 @@ export const StyledMainButton = styled.button`
     font-size: 1.1rem;
     line-height: 38px;
     width: 100%;
-    :hover {
-        color: white;
-        background-color: ${colors.mainRed};
-    }
+
     &:disabled {
         color: white;
         background-color: ${colors.mainRed};
+    }
+    @media screen and (min-width: 480px) {
+        :hover {
+            color: white;
+            background-color: ${colors.mainRed};
+        }
     }
 `;
 
 export const StyledSecondButton = styled(StyledMainButton)`
     color: white;
     background-color: ${colors.mainRed};
-
-    :disabled {
+    z-index: 100;
+    &:disabled {
         color: ${colors.mainRed};
         background-color: white;
     }
 
-    :hover {
-        background-color: white;
-        color: ${colors.mainRed};
+    @media screen and (min-width: 480px) {
+        :hover {
+            background-color: white;
+            color: ${colors.mainRed};
+        }
     }
 `;
-const setXImgVisible = (props) => {};
+
 export const StyledAnswerButton = styled(StyledMainButton)`
     position: relative;
     background-color: ${(props) =>
@@ -43,12 +50,6 @@ export const StyledAnswerButton = styled(StyledMainButton)`
     border: ${(props) => (props.ischecked ? "" : `black 1px solid`)};
 
     :hover {
-        /*  background-color: white;
-    color: ${colors.mainGreen};
-    border: ${colors.mainGreen} 1px solid;
-  img {
-        visibility: hidden;
-    } */
         background-color: ${(props) =>
             props.ischecked ? colors.mainGreen : "transparent"};
         color: ${(props) => (props.ischecked ? "white" : "black")};
@@ -66,8 +67,6 @@ export const StyledAnswerButton = styled(StyledMainButton)`
         transform: translate(0, -50%);
         display: ${(props) =>
             props.ischecked || props.limit ? "none" : `block`};
-
-        ${(props) => setXImgVisible(props)}
     }
 `;
 
@@ -76,6 +75,7 @@ export const StyledAddButton = styled(StyledMainButton)`
     background-color: rgba(92, 92, 92, 0.15);
     font-size: 3rem;
     visibility: ${(props) => (props.visible ? "visible" : "hidden")};
+
     :hover {
         background-color: black;
     }
@@ -98,7 +98,8 @@ export const StyledKaKaoButton = styled.div`
         left: 10%;
         top: 50%;
         margin-top: 2px;
-        transform: translate(-10%, -50%);
+        transform: translate(-5%, -50%);
+        width: 1.5rem;
     }
 
     :hover {
@@ -112,5 +113,12 @@ export const StyledCopyButton = styled(StyledKaKaoButton)`
     font-size: 0.9rem;
     img {
         margin-top: 0px;
+        width: 1.5rem;
+        left: 6%;
     }
+`;
+
+export const StyledHomeButton = styled.img`
+    width: 48px;
+    height: 48px;
 `;

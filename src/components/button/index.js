@@ -1,7 +1,11 @@
 import Xbutton from "../../assets/x.svg";
 import Kakao from "../../assets/kakao.png";
 import CopyImg from "../../assets/copy.png";
+import HomeImg from "../../assets/home.png";
+
 import { useState, useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
 import {
     StyledMainButton,
     StyledSecondButton,
@@ -9,6 +13,7 @@ import {
     StyledAddButton,
     StyledKaKaoButton,
     StyledCopyButton,
+    StyledHomeButton,
 } from "./style";
 
 export const MainButton = ({ text, disabled, onClick }) => {
@@ -76,7 +81,6 @@ export const AnswerButton = ({
 };
 
 export const AddButton = ({ onClick, isVisible }) => {
-    useEffect(() => {}, []);
     return (
         <StyledAddButton onClick={onClick} visible={isVisible}>
             +
@@ -139,5 +143,17 @@ export const KakaoSahreButton = ({ url }) => {
             카카오톡 공유하기
             <img src={Kakao} />
         </StyledKaKaoButton>
+    );
+};
+
+export const GoHomeButton = () => {
+    const navigator = useNavigate();
+    return (
+        <StyledHomeButton
+            src={HomeImg}
+            onClick={() => {
+                navigator("/");
+            }}
+        ></StyledHomeButton>
     );
 };

@@ -2,7 +2,7 @@ import React from "react";
 import styled, { keyframes, css } from "styled-components";
 
 import Oven from "../assets/oven.png";
-import SantaCookie from "../assets/santa_cookie.svg";
+import SantaCookie from "../assets/santa_cookie.png";
 
 const textScale = keyframes`
     from {
@@ -47,9 +47,11 @@ const ovenFadeOut = keyframes`
 `;
 const baking = keyframes` 
     0% {
+        animation-delay: 2s;
         transform: scale(1.2, 1.2);
         transform: rotate(0deg);
         left : 25%;
+      
     }
 
     10% {
@@ -114,7 +116,7 @@ export const AnimateCss = css`
 export const StyledContainer = styled.div`
     position: relative;
     width: 100%;
-    height: calc(var(--vh) * 1 * 100 - 54px);
+    //height: calc(var(--vh) * 1 * 100 - 54px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -172,13 +174,12 @@ export const AnimateOvenImg = styled.div`
     background-size: contain;
     animation-iteration-count: 1;
     animation: ${baking} 2.5s;
-    /* animation-delay: 2s; */
 `;
 export const AnimatCookieImg = styled.div`
-    width: 25%;
+    width: 30%;
     height: 35%;
     z-index: 3;
-    bottom: 20%;
+    bottom: 15%;
     left: 50%;
     transform: translate(-50%, 0%);
     position: absolute;

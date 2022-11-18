@@ -98,7 +98,7 @@ const Home = () => {
                         justifyContent: "center",
                         alignItems: "center",
                         position: "absolute",
-                        bottom: "5%",
+                        bottom: "0%",
                         visibility: `${thirdTextState ? "" : "hidden"}`,
                     }}
                 >

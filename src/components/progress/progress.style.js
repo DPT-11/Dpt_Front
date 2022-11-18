@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import FocusItem from "../../assets/progress_focus.svg";
-import UnfocusItem from "../../assets/progress_none.svg";
+import FocusItem from "../../assets/progress_focus.png";
+import UnfocusItem from "../../assets/progress_unfocus.png";
 
 export const ProgressBarWrapper = styled.div`
     display: flex;
@@ -11,8 +11,8 @@ export const ProgressBarWrapper = styled.div`
 `;
 
 export const ProgressItem = styled.div`
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 40px;
     background: ${(props) => `url(${getItemImg(props)}) no-repeat top center`};
     background-size: contain;
 `;

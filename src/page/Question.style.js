@@ -1,4 +1,49 @@
 import styled from "styled-components";
+export const StyledContainer = styled.div`
+    position: relative;
+    width: 100%;
+    height: calc(var(--vh) * 1 * 100 - 54px);
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+
+    h1 {
+        font-size: 2rem;
+        margin-top: 210px;
+        margin-bottom: 24px;
+    }
+
+    h2 {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 38px;
+    }
+`;
+
+export const StyledQuestionContainer = styled.div`
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+
+    h1 {
+        font-size: 2rem;
+        margin-top: 210px;
+        margin-bottom: 24px;
+    }
+
+    h2 {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 38px;
+    }
+`;
 
 export const QuestionWrapper = styled.div`
     position: relative;
@@ -48,7 +93,7 @@ export const AnswerWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     gap: 1.2rem;
-
+    padding-bottom: 2rem;
     @media screen and (min-width: 480px) {
         width: 85%;
     }

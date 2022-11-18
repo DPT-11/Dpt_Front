@@ -88,7 +88,9 @@ const Register = () => {
                     <SecondButton
                         text={"회원가입"}
                         disabled={inputState === null || !inputState}
-                        onClick={() => onClickSubmit()}
+                        onClick={() => {
+                            onClickSubmit();
+                        }}
                     />
                 </div>
             </StyledContainer>
