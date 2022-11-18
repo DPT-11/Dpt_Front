@@ -1,6 +1,7 @@
 import { createGlobalStyle, css } from "styled-components";
 import reset from "styled-reset";
 
+
 const customReset = css`
     *,
     *::before,
@@ -82,9 +83,13 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-style: normal;
   }
-  * {
-    font-family: 'Noto Sans KR', sans-serif !important;
+  @font-face{
+    fontFamily: 'Gamja Flower', cursive;
+    src : url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Noto+Sans+KR&display=swap');
+    font-weight: 400;
     font-style: normal;
+  }
+  * {
     letter-spacing: -0.02em;
     user-select: none;
     -webkit-touch-callout: none;
