@@ -47,7 +47,7 @@ const QuizResult = () => {
     }, [onClickCopy]);
 
     const { token } = useParams();
-    const baseUrl = "localhost:3000";
+    const baseUrl = "http://localhost:3000";
     const url = `${baseUrl}/quiz/${token}`;
     return (
         <DefaultLayout>
@@ -75,7 +75,7 @@ const QuizResult = () => {
                             setOnClickCopy(true);
                         }}
                     />
-                    <KakaoSahreButton />
+                    <KakaoSahreButton url={url} />
                 </div>
                 <StyledToastContainer limit={0} />
             </StyledContainer>

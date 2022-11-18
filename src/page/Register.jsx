@@ -6,21 +6,33 @@ import { SecondButton } from "../components/button";
 import { DefaultLayout } from "../styles/common";
 import InputField from "../components/inputField";
 import { useNavigate } from "react-router-dom";
+import { MainButton } from "../components/button/index";
 
-const Login = () => {
+const Register = () => {
     const [name, setName] = useState(null);
     const [pwd, setPwd] = useState(null);
+
+    const [inputState, setInputState] = useState(false);
+    const [token, setToken] = useState(null);
+
     const navigator = useNavigate();
-    useEffect(() => {}, []);
+    useEffect(() => {
+        setInputState(name && pwd && pwd.length === 4);
+    }, [name, pwd]);
+
+    useEffect(() => {
+        console.log(inputState);
+    }, [inputState]);
 
     const onClickSubmit = () => {
-        //Todo 유저 등록 API
+        // Todo 유저 등록 API
         if (true) {
             console.log(name, pwd);
-            const token = "hyomintoken";
-            navigator(`/${token}/question`);
+            setToken("response");
+            if (token) navigator(`/${token}/cookie`);
         } else {
-            //Todo Toast 알림
+            setName("");
+            setPwd("");
         }
     };
 
@@ -75,6 +87,7 @@ const Login = () => {
                 >
                     <SecondButton
                         text={"회원가입"}
+                        disabled={inputState === null || !inputState}
                         onClick={() => onClickSubmit()}
                     />
                 </div>
@@ -83,4 +96,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
