@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import "react-toastify/dist/ReactToastify.css";
-import ResultCookie from "../assets/santa_cookie.svg";
+import ResultCookie from "../assets/cookie_3d_1.png";
 import { StyledContainer } from "./Home.style.js";
 
 import { CopyButton, KakaoSahreButton } from "../components/button";
