@@ -3,6 +3,7 @@ import KjwButtonCopy from "./kjwButtonCopy";
 import KjwButtonGotoHome from "./kjwButtonGotoHome";
 import KjwButtonKakao from "./kjwButtonKakao";
 import KjwImgHeader from "./kjwImgHeader";
+import KjwResultCookie from './kjwResultCookie';
 
 function KjwResult(props) {
     return (
@@ -17,7 +18,7 @@ function KjwResult(props) {
             >
                 {props.name}님 퀴즈 결과
             </span>
-            <img src={resultCookie} />
+            <KjwResultCookie version={props.version} level={props.result}/>
             <span
                 style={{
                     height: "38px",
