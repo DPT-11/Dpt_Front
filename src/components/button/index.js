@@ -1,9 +1,11 @@
-import styled from "styled-components";
-import colors from "../../styles/colors";
 import Xbutton from "../../assets/x.svg";
 import Kakao from "../../assets/kakao.png";
 import CopyImg from "../../assets/copy.png";
+import HomeImg from "../../assets/home.png";
+
 import { useState, useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
 import {
     StyledMainButton,
     StyledSecondButton,
@@ -11,6 +13,7 @@ import {
     StyledAddButton,
     StyledKaKaoButton,
     StyledCopyButton,
+    StyledHomeButton,
 } from "./style";
 
 export const MainButton = ({ text, disabled, onClick }) => {
@@ -78,20 +81,10 @@ export const AnswerButton = ({
 };
 
 export const AddButton = ({ onClick, isVisible }) => {
-    useEffect(() => {}, []);
     return (
         <StyledAddButton onClick={onClick} visible={isVisible}>
             +
         </StyledAddButton>
-    );
-};
-
-export const KakaoSahreButton = ({ url, onClick }) => {
-    return (
-        <StyledKaKaoButton onClick={() => onClick()}>
-            카카오톡 공유하기
-            <img src={Kakao} />
-        </StyledKaKaoButton>
     );
 };
 
@@ -101,5 +94,66 @@ export const CopyButton = ({ url, onClick }) => {
             {url}
             <img src={CopyImg} />
         </StyledCopyButton>
+    );
+};
+
+export const KakaoSahreButton = ({ url }) => {
+    useEffect(() => {
+        console.log(url);
+        createKakaoButton();
+    }, []);
+    const createKakaoButton = (quizUrl) => {
+        if (window.Kakao) {
+            const kakao = window.Kakao;
+            // 중복 initialization 방지
+            if (!kakao.isInitialized()) {
+                kakao.init(process.env.REACT_APP_KAKAO_KEY);
+            }
+
+            kakao.Share.createDefaultButton({
+                container: "#kakao-link-btn",
+                objectType: "feed",
+                content: {
+                    title: "타이틀",
+                    description: "#멋쟁이 사자처럼 #연합해커톤",
+                    imageUrl:
+                        "https://s3.ap-northeast-2.amazonaws.com/img.stibee.com/11863_list_126266_subscriptions_header_image.png?v=1624414986", // i.e. process.env.FETCH_URL + '/logo.png'
+                    link: {
+                        mobileWebUrl: window.location.href.replace(
+                            window.location.href,
+                            url
+                        ),
+                        webUrl: window.location.href.replace(
+                            window.location.href,
+                            url
+                        ),
+                    },
+                },
+            });
+        }
+    };
+    return (
+        <StyledKaKaoButton
+            id="kakao-link-btn"
+            url={url}
+            onClick={() => {
+                createKakaoButton(url);
+            }}
+        >
+            카카오톡 공유하기
+            <img src={Kakao} />
+        </StyledKaKaoButton>
+    );
+};
+
+export const GoHomeButton = () => {
+    const navigator = useNavigate();
+    return (
+        <StyledHomeButton
+            src={HomeImg}
+            onClick={() => {
+                navigator("/");
+            }}
+        ></StyledHomeButton>
     );
 };

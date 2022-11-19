@@ -8,6 +8,11 @@ import {
     AnimateText2,
     AnimateOvenImg,
     AnimatCookieImg,
+    CookieCss,
+    CenterCookie,
+    CookieWrapper,
+    LeftCookie,
+    RightCookie,
 } from "./Home.style";
 import Decoration from "../components/Decoration";
 import { MainButton } from "../components/button";
@@ -18,11 +23,13 @@ const Home = () => {
     const [firstTextState, setFirstState] = useState(false);
     const [secondTextState, setSecondState] = useState(false);
     const [thirdTextState, setThirdState] = useState(false);
-    const [ovenState, setOvenState] = useState(false);
+    const [firstCookie, setfirstCookie] = useState(false);
+    const [secondCookie, setSecondCookie] = useState(false);
 
     const navigator = useNavigate();
 
     const onClickGotoCreate = () => {
+        //TODO API 호출
         navigator("/create");
     };
 
@@ -31,64 +38,107 @@ const Home = () => {
         setFirstState(false);
         setSecondState(false);
         setThirdState(false);
-        setOvenState(false);
+        setfirstCookie(false);
+        setSecondCookie(false);
         setTimeout(() => {
             setFirstState(true);
         }, 1000);
         setTimeout(() => {
             setFirstState(false);
-            setOvenState(true);
+            setfirstCookie(true);
             setSecondState(true);
         }, 4000);
         setTimeout(() => {
+            setSecondCookie(true);
+        }, 5800);
+        setTimeout(() => {
             setSecondState(false);
             setThirdState(true);
-        }, 7000);
+        }, 7500);
     }, []);
     return (
         <DefaultLayout>
             <StyledContainer>
                 <Decoration />
                 <h1>너가 만든 쿠키</h1>
-
-                <div
+                {
+                    <div
+                        style={{
+                            height: "10%",
+                            width: "100%",
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
+                    >
+                        <AnimateText
+                            style={{
+                                display: `${firstTextState ? "" : "none"}`,
+                            }}
+                        >
+                            {`당신은 어떤 크리스마스를 보내고 싶으신가요?`}
+                        </AnimateText>
+                        <AnimateText
+                            style={{
+                                display: `${secondTextState ? "" : "none"}`,
+                            }}
+                        >
+                            나만의 퀴즈를 만들면서 쿠키를 구워보아요
+                        </AnimateText>
+                        <AnimateText2
+                            style={{
+                                display: `${thirdTextState ? "" : "none"}`,
+                            }}
+                        >
+                            {"그리고 친구에게 공유해 "}
+                        </AnimateText2>
+                        <AnimateText2
+                            style={{
+                                display: `${thirdTextState ? "" : "none"}`,
+                            }}
+                        >
+                            {"나를 가장 잘 아는 친구를 확인해보세요!"}
+                        </AnimateText2>
+                    </div>
+                }
+                <CookieWrapper>
+                    <div
+                        className="cookie-img"
+                        style={{
+                            position: "relative",
+                            height: "100%",
+                            width: "100%",
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
+                    >
+                        <LeftCookie
+                            style={{ display: `${firstCookie ? "" : "none"}` }}
+                        />
+                        <CenterCookie />
+                        <RightCookie
+                            style={{
+                                display: `${secondCookie ? "" : "none"}`,
+                            }}
+                        />
+                    </div>
+                </CookieWrapper>
+                {/* <div
+                    className="cookie-img"
                     style={{
-                        height: "10%",
+                        height: "30%",
                         width: "100%",
                         display: "flex",
-                        flexDirection: "column",
+                        flexDirection: "row",
                         justifyContent: "center",
                         alignItems: "center",
                     }}
                 >
-                    <AnimateText
-                        style={{ display: `${firstTextState ? "" : "none"}` }}
-                    >
-                        {`당신은 어떤 크리스마스를 보내고 싶으신가요?`}
-                    </AnimateText>
-                    <AnimateText
-                        style={{ display: `${secondTextState ? "" : "none"}` }}
-                    >
-                        나만의 퀴즈를 만들면서 쿠키를 구워보아요
-                    </AnimateText>
-                    <AnimateText2
-                        style={{ display: `${thirdTextState ? "" : "none"}` }}
-                    >
-                        {"그리고 친구에게 공유해 "}
-                    </AnimateText2>
-                    <AnimateText2
-                        style={{ display: `${thirdTextState ? "" : "none"}` }}
-                    >
-                        {"나를 가장 잘 아는 친구를 확인해보세요!"}
-                    </AnimateText2>
-                </div>
-
-                <AnimateOvenImg
-                    style={{ display: `${ovenState ? "" : "none"}` }}
-                />
-                <AnimatCookieImg
-                    style={{ display: `${ovenState ? "" : "none"}` }}
-                />
+                    <CenterCookie />
+                </div> */}
                 <div
                     style={{
                         width: "100%",
@@ -97,7 +147,7 @@ const Home = () => {
                         justifyContent: "center",
                         alignItems: "center",
                         position: "absolute",
-                        bottom: "5%",
+                        bottom: "0%",
                         visibility: `${thirdTextState ? "" : "hidden"}`,
                     }}
                 >

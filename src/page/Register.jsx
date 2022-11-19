@@ -8,7 +8,7 @@ import InputField from "../components/inputField";
 import { useNavigate } from "react-router-dom";
 import { MainButton } from "../components/button/index";
 
-const Login = () => {
+const Register = () => {
     const [name, setName] = useState(null);
     const [pwd, setPwd] = useState(null);
 
@@ -98,4 +98,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

@@ -1,12 +1,12 @@
-import React from 'react';
-import KjwResult from './../components/kjwResult';
+import React from "react";
+import KjwResult from "./../components/kjwResult";
 
 function QuizResult() {
     let getParameter = (key) => {
         return new URLSearchParams(window.location.search).get(key);
     };
-    const name= getParameter("name");
-    const result = getParameter("result")
+    const name = getParameter("name");
+    const result = getParameter("result");
     const shareResult = () => {
         alert("/quiz/quizResult?name="+name+"&&"+result);
     }
