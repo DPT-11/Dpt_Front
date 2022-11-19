@@ -8,11 +8,13 @@ function KjwQuizingButton(props){
         else{
             t.style.backgroundColor = "#D43C2F"
         }
-        console.log(t)
+        setTimeout(function() {
+            t.style.backgroundColor = "#F7EEE5"
+        }, 2000);
     }
 
     return(
-        <button className="kjwQuizingBtn" style={{backgroundColor:`${props.check?"#ffffff00":"#F7EEE5"}`}}
+        <button className="kjwQuizingBtn" 
             onClick={ (e) => { 
                 props.selesctListener(props.option, props.answer)
                 {isResult(e.target)}

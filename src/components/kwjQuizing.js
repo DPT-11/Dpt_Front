@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import KjwProgressArray from "./kjwProgressArray";
 import { useNavigate, useParams } from 'react-router-dom';
 import { QuestionData } from './../utls/question';
+import { Toast } from "./toast";
 
 function KjwQuizing(props) {
     const divCss = {
@@ -47,41 +48,6 @@ function KjwQuizing(props) {
     }
     console.log(QuestionData);
     const testQuestion = QuestionData[0].questions;
-
-    /*
-    const questions = [
-        {
-            "questionId" : 1,
-			"question" : "무슨 영화1",
-			"options" : ["멜로","스릴러", "내가 새로 만든 답안1","내가 새로 만든 답안2"],
-			"answer" : "내가 새로 만든 답안2"
-        },
-        {
-            "questionId" : 2,
-			"question" : "무슨 영화2",
-			"options" : ["ㄱ","ㄴ","ㄷ","ㄹ"],
-			"answer" : "ㄹ"
-        },
-        {
-            "questionId" : 3,
-			"question" : "무슨 영화3",
-			"options" : ["멜로","스릴러","내가 새로 만든 답안1","내가 새로 만든 답안2"],
-			"answer" : "내가 새로 만든 답안2"
-        },
-        {
-            "questionId" : 4,
-			"question" : "무슨 영화4",
-			"options" : ["ㄱ","ㄴ","ㄷ","ㄹ"],
-			"answer" : "ㄹ"
-        },
-        {
-            "questionId" : 5,
-			"question" : "무슨 영화5",
-			"options" : ["멜로","스릴러","내가 새로 만든 답안2"],
-			"answer" : "내가 새로 만든 답안2"
-        }
-    ]*/
-
     const navigator = useNavigate();
     const params = useParams();
     const [progress, setProgress] = useState(0);
@@ -158,6 +124,7 @@ function KjwQuizing(props) {
                 <div style={divAnswerCss}>
                     {check && correct && <span>정답입니다.</span>}
                     {check && !correct && <span>오답입니다.</span>}
+
                 </div>
             </div>
         </div>
