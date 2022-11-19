@@ -1,4 +1,3 @@
-// eslint-disable-next-line jsx-a11y/alt-text
 import CopyImg from "../../assets/copy.png";
 import HomeImg from "../../assets/home.png";
 import Kakao from "../../assets/kakao.png";
@@ -45,7 +44,7 @@ export const AnswerButton = ({
     useEffect(() => {
         if (isAnswered === null || isAnswered !== text) {
             setIsChecked(false);
-        } else if (isAnswered && isAnswered === text) {
+        } else if (isAnswered && isAnswered == text) {
             setIsChecked(true);
         }
     }, [isAnswered]);
@@ -68,7 +67,6 @@ export const AnswerButton = ({
             limit={limit}
         >
             {text}
-
             <img
                 src={Xbutton}
                 ischecked={isChecked}
@@ -119,7 +117,7 @@ export const KakaoSahreButton = ({ url }) => {
                     title: "타이틀",
                     description: "#멋쟁이 사자처럼 #연합해커톤",
                     imageUrl:
-                        "https://s3.ap-northeast-2.amazonaws.com/img.stibee.com/11863_list_126266_subscriptions_header_image.png?v=1624414986", // i.e. process.env.FETCH_URL + '/logo.png'
+                        "https://drive.google.com/file/d/1E090PXNvpsUVblePJIOfviSkHarLipxd/view?usp=share_link", // i.e. process.env.FETCH_URL + '/logo.png'
                     link: {
                         mobileWebUrl: window.location.href.replace(
                             window.location.href,
