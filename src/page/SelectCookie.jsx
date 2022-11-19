@@ -4,7 +4,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { SecondButton } from "../components/button";
 import { CookieItem } from "../components/selectedCookie";
 
-import Cookie_ver_1 from "../assets/cookie_ver_1.svg";
+import Cookie_ver_1 from "../assets/cookie_3d_1.png";
+import Cookie_ver_2 from "../assets/cookie_3d_2.png";
+import Cookie_ver_3 from "../assets/cookie_3d_3.png";
+
 import Left from "../assets/left_glove.png";
 import Oven from "../assets/oven.png";
 import Pan from "../assets/pan.png";
@@ -143,7 +146,7 @@ const SelectCookie = () => {
                     />
                     <CookieItem
                         className="cookie-item cookie-second"
-                        src={Cookie_ver_1}
+                        src={Cookie_ver_2}
                         selected={
                             selectedCookie === null || selectedCookie === 2
                         }
@@ -151,7 +154,7 @@ const SelectCookie = () => {
                     />
                     <CookieItem
                         className="cookie-item cookie-third"
-                        src={Cookie_ver_1}
+                        src={Cookie_ver_3}
                         selected={
                             selectedCookie === null || selectedCookie === 3
                         }

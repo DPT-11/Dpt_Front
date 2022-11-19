@@ -12,7 +12,7 @@ const Login = () => {
     const [pwd, setPwd] = useState(null);
 
     const [inputState, setInputState] = useState(false);
-    const [token, setToken] = useState(null);
+    const [token, setToken] = useState(1);
 
     const navigator = useNavigate();
     useEffect(() => {
@@ -85,7 +85,7 @@ const Login = () => {
                     }}
                 >
                     <SecondButton
-                        text={"회원가입"}
+                        text={"로그인"}
                         disabled={inputState === null || !inputState}
                         onClick={() => {
                             onClickSubmit();

@@ -36,7 +36,7 @@ const QuestionResult = () => {
     }, [onClickCopy]);
 
     const { token } = useParams();
-    const baseUrl = "http://localhost:3000";
+    const baseUrl = "https://your-christmas-cookie.netlify.app";
     const url = `${baseUrl}/guest/${token}`;
     return (
         <StyledContainer>

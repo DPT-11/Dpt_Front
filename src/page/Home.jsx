@@ -158,7 +158,7 @@ const Home = () => {
                         <MainButton
                             text={"내 쿠키 보러가기"}
                             onClick={() => {
-                                navigator("/1/mycookies");
+                                navigator("/login");
                             }}
                         />
                     </div>
