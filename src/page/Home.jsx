@@ -128,19 +128,7 @@ const Home = () => {
                         />
                     </div>
                 </CookieWrapper>
-                {/* <div
-                    className="cookie-img"
-                    style={{
-                        height: "30%",
-                        width: "100%",
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}
-                >
-                    <CenterCookie />
-                </div> */}
+
                 <div
                     style={{
                         width: "100%",

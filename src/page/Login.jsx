@@ -27,8 +27,8 @@ const Login = () => {
         // Todo 유저 등록 API
         if (true) {
             console.log(name, pwd);
-            setToken("response");
-            if (token) navigator(`/${token}/cookie`);
+            setToken("1");
+            if (token) navigator(`/${token}/mycookies`);
         } else {
             setName("");
             setPwd("");

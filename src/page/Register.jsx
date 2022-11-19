@@ -25,6 +25,8 @@ const Register = () => {
 
     const onClickSubmit = () => {
         // Todo 유저 등록 API
+        //const res = requestRegist(name, pwd);
+        // console.log("result", res);
         if (true) {
             console.log(name, pwd);
             setToken("response");

@@ -116,8 +116,7 @@ export const KakaoSahreButton = ({ url }) => {
                 content: {
                     title: "타이틀",
                     description: "#멋쟁이 사자처럼 #연합해커톤",
-                    imageUrl:
-                        "https://drive.google.com/file/d/1E090PXNvpsUVblePJIOfviSkHarLipxd/view?usp=share_link", // i.e. process.env.FETCH_URL + '/logo.png'
+                    imageUrl: "../../assets/mainLogo.png", // i.e. process.env.FETCH_URL + '/logo.png'
                     link: {
                         mobileWebUrl: window.location.href.replace(
                             window.location.href,
