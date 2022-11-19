@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-import Decoration from "../components/Decoration";
-import { StyledContainer } from "./Home.style";
-import { SecondButton } from "../components/button";
-import { DefaultLayout } from "../styles/common";
-import InputField from "../components/inputField";
 import { useNavigate } from "react-router-dom";
-import { MainButton } from "../components/button/index";
+import { SecondButton } from "../components/button";
+import Decoration from "../components/Decoration";
+import InputField from "../components/inputField";
+import { DefaultLayout } from "../styles/common";
+import { StyledContainer } from "./Home.style";
 
-const Login = () => {
+const Register = () => {
     const [name, setName] = useState(null);
     const [pwd, setPwd] = useState(null);
 
@@ -98,4 +97,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

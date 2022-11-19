@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { ProgressBarWrapper, ProgressItem } from "./progress.style";
-import FocusItem from "../../assets/progress_focus.svg";
-import UnfocusItem from "../../assets/progress_none.svg";
 
-const ProgressBar = ({ curStep }) => {
+const ProgressBar = ({ curStep, itemListener }) => {
     const [progress, setProgress] = useState(
         curStep !== undefined ? curStep : 0
     );
     const step = [true, false, false, false, false];
     useEffect(() => {
-        console.log("progressBar" + curStep);
         if (curStep < 5) setProgress(curStep);
     }, [curStep]);
     return (
@@ -20,7 +17,8 @@ const ProgressBar = ({ curStep }) => {
                         return (
                             <ProgressItem
                                 key={idx}
-                                focusItem={idx === progress}
+                                focusItem={idx <= progress}
+                                onClick={() => itemListener(idx)}
                             />
                         );
                 })}
