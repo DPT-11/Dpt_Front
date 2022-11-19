@@ -114,9 +114,10 @@ export const KakaoSahreButton = ({ url }) => {
                 container: "#kakao-link-btn",
                 objectType: "feed",
                 content: {
-                    title: "타이틀",
-                    description: "#멋쟁이 사자처럼 #연합해커톤",
-                    imageUrl: "../../assets/mainLogo.png", // i.e. process.env.FETCH_URL + '/logo.png'
+                    title: "너가 만든 쿠키",
+                    description: "#크리스마스#퀴즈#쿠키꾸미기 ",
+                    imageUrl:
+                        "https://velog.velcdn.com/images/hyom/post/81874a67-5a1a-4d19-ae17-4a8af172c051/image.png", // i.e. process.env.FETCH_URL + '/logo.png'
                     link: {
                         mobileWebUrl: window.location.href.replace(
                             window.location.href,
