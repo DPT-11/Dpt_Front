@@ -18,7 +18,7 @@ function GuestPage(){
             setUser(null);
             setError(null);
             setLoading(true); //로딩이 시작됨
-            const response = await axios.get('http://127.0.0.1:8000/quiz/cookie/');
+            const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
             setUser(response.data);
             console.log(response.data);
         }
@@ -39,7 +39,7 @@ function GuestPage(){
     return(
         <div className='kjw_body'>
             <div className='kjw_main'>
-                <KjwStart owner={user.user} cookie={user.cookie}/>
+                <KjwStart owner={user.userId}/>
             </div>
         </div>
     );
