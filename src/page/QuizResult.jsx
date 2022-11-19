@@ -1,6 +1,7 @@
+import "animate.css";
 import React from "react";
-import KjwResult from "./../components/kjwResult";
 
+import KjwResult from "../components/kjwResult";
 function QuizResult() {
     let getParameter = (key) => {
         return new URLSearchParams(window.location.search).get(key);

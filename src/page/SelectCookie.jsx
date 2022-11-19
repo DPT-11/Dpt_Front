@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-//import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-import { CookieItem } from "../components/selectedCookie";
 import { SecondButton } from "../components/button";
+import { CookieItem } from "../components/selectedCookie";
 
-import Oven from "../assets/oven.png";
 import Cookie_ver_1 from "../assets/cookie_ver_1.svg";
-import Pan from "../assets/pan.png";
 import Left from "../assets/left_glove.png";
+import Oven from "../assets/oven.png";
+import Pan from "../assets/pan.png";
 import Right from "../assets/right_glove.png";
 
 import "animate.css";
-import "./SelectCookie.style.css";
 import { DefaultLayout } from "../styles/common";
+import "./SelectCookie.style.css";
 
 const SelectCookie = () => {
     const [selectedCookie, setSelectCookie] = useState(null);

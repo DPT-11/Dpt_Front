@@ -1,6 +1,6 @@
+import { useEffect } from "react";
 import styled, { css } from "styled-components";
 import colors from "./colors";
-import { useEffect } from "react";
 
 export const hideScrollbar = css`
     -ms-overflow-style: none; /* IE and Edge */

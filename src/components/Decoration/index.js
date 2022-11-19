@@ -1,7 +1,5 @@
 import React from "react";
-import DecorationImg from "../../assets/decoration.png";
-
-import styled, { keyframes, css } from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import Deco1 from "../../assets/deco1.png";
 import Deco2 from "../../assets/deco2.png";
@@ -22,15 +20,6 @@ const animateDeco = keyframes`
         transform: translate(0%,0%);
         transition: transform 0.3s;
     }
-`;
-const StyledDecorationDiv = styled.div`
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-position: top center;
-    align-self: center;
-    top: -20px;
 `;
 
 const StyledDecorationAnimateDiv = styled.div`

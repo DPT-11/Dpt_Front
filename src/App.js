@@ -1,16 +1,18 @@
-import GlobalStyle from "./styles/globalStyles";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { MediaDiv } from "./styles/common";
-import Home from "./page/Home";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import SelectCookie from "./page/SelectCookie";
+import GuestPage from "./page/GuestPage";
+import Home from "./page/Home";
+import Login from "./page/Login";
+import MyCookie from "./page/MyCookie";
+import NotFound from "./page/NotFound";
 import Question from "./page/Question";
 import QuestionResult from "./page/QuestionResult";
-import Register from "./page/Register";
-import Login from "./page/Login";
-import GuestPage from "./page/GuestPage";
 import QuizPlay from "./page/QuizPlay";
 import QuizResult from "./page/QuizResult";
+import Register from "./page/Register";
+import SelectCookie from "./page/SelectCookie";
+import { MediaDiv } from "./styles/common";
+import GlobalStyle from "./styles/globalStyles";
 
 function App() {
     return (
@@ -34,11 +36,6 @@ function App() {
                             path="/:token/share"
                             element={<QuestionResult />}
                         ></Route>
-
-                        <Route path="/:token/quiz" element={<GuestPage/>}> </Route>
-                        <Route path="/:token/quiz/quizPlay" element={<QuizPlay/>}></Route>
-                        <Route path="/:token/quiz/quizResult" element={<QuizResult/>}></Route>
-                        <Route path="*" element={<h1>Not found</h1>}></Route>
                     </Routes>
                 </MediaDiv>
             </Router>
