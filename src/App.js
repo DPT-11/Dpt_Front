@@ -3,8 +3,6 @@ import "./App.css";
 import GuestPage from "./page/GuestPage";
 import Home from "./page/Home";
 import Login from "./page/Login";
-import MyCookie from "./page/MyCookie";
-import NotFound from "./page/NotFound";
 import Question from "./page/Question";
 import QuestionResult from "./page/QuestionResult";
 import QuizPlay from "./page/QuizPlay";
@@ -35,6 +33,17 @@ function App() {
                         <Route
                             path="/:token/share"
                             element={<QuestionResult />}
+                        ></Route>
+                        <Route path="/:token/quiz" element={<GuestPage />}>
+                            {" "}
+                        </Route>
+                        <Route
+                            path="/:token/quiz/quizPlay"
+                            element={<QuizPlay />}
+                        ></Route>
+                        <Route
+                            path="/:token/quiz/quizResult"
+                            element={<QuizResult />}
                         ></Route>
                     </Routes>
                 </MediaDiv>
