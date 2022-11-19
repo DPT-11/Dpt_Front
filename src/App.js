@@ -1,11 +1,12 @@
-import GlobalStyle from "./styles/globalStyles";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { MediaDiv } from "./styles/common";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./page/Home";
-import SelectCookie from "./page/SelectCookie";
+import MyCookie from "./page/MyCookie";
 import Question from "./page/Question";
 import QuestionResult from "./page/QuizResult";
 import Register from "./page/Register";
+import SelectCookie from "./page/SelectCookie";
+import { MediaDiv } from "./styles/common";
+import GlobalStyle from "./styles/globalStyles";
 
 function App() {
     return (
@@ -28,6 +29,9 @@ function App() {
                             path="/:token/share"
                             element={<QuestionResult />}
                         ></Route>
+                        <Route path="/:token/mycookies" element={<MyCookie />}>
+                            {" "}
+                        </Route>
                         <Route path="*" element={<h1>Not found</h1>}></Route>
                     </Routes>
                 </MediaDiv>

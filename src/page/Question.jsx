@@ -1,25 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
-
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import QuestionHat from "../assets/questionHat.svg";
 
-import ProgressBar from "../components/progress/index";
-import { Toast } from "../components/toast";
-import {
-    AnswerWrapper,
-    QuestionWrapper,
-    StyledQuestionContainer,
-} from "./Question.style";
 import {
     AddButton,
     AnswerButton,
     SecondButton,
 } from "../components/button/index";
 import { AnswerInputField } from "../components/inputField/index";
-import { ToastContainer } from "react-toastify";
+import ProgressBar from "../components/progress/index";
+import { Toast } from "../components/toast";
 import { StyledToastContainer } from "../components/toast/index";
+import {
+    AnswerWrapper,
+    QuestionWrapper,
+    StyledQuestionContainer,
+} from "./Question.style";
 
 const Question = () => {
     const { state } = useLocation();

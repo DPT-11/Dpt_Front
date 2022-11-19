@@ -1,10 +1,9 @@
-import React from "react";
-import styled, { keyframes, css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
-import Oven from "../assets/oven.png";
-import SantaCookie from "../assets/santa_cookie.png";
 import Cookie1 from "../assets/cookie_ver_2.png";
 import Cookie2 from "../assets/cookie_ver_3.png";
+import Oven from "../assets/oven.png";
+import SantaCookie from "../assets/santa_cookie.png";
 const textScale = keyframes`
     from {
         transform: scale(0.9, 0.9);

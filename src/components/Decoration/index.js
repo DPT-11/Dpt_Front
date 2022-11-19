@@ -1,7 +1,5 @@
 import React from "react";
-import DecorationImg from "../../assets/decoration.png";
-
-import styled, { keyframes, css } from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import Deco1 from "../../assets/deco1.png";
 import Deco2 from "../../assets/deco2.png";

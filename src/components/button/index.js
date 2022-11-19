@@ -1,19 +1,19 @@
-import Xbutton from "../../assets/x.svg";
-import Kakao from "../../assets/kakao.png";
 import CopyImg from "../../assets/copy.png";
 import HomeImg from "../../assets/home.png";
+import Kakao from "../../assets/kakao.png";
+import Xbutton from "../../assets/x.svg";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 import {
-    StyledMainButton,
-    StyledSecondButton,
-    StyledAnswerButton,
     StyledAddButton,
-    StyledKaKaoButton,
+    StyledAnswerButton,
     StyledCopyButton,
     StyledHomeButton,
+    StyledKaKaoButton,
+    StyledMainButton,
+    StyledSecondButton,
 } from "./style";
 
 export const MainButton = ({ text, disabled, onClick }) => {

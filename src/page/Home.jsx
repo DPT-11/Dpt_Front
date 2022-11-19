@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from "react";
 import "animate.css";
-import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { MainButton } from "../components/button";
+import Decoration from "../components/Decoration";
+import { DefaultLayout } from "../styles/common";
 import {
-    StyledContainer,
     AnimateText,
     AnimateText2,
-    AnimateOvenImg,
-    AnimatCookieImg,
-    CookieCss,
     CenterCookie,
     CookieWrapper,
     LeftCookie,
     RightCookie,
+    StyledContainer,
 } from "./Home.style";
-import Decoration from "../components/Decoration";
-import { MainButton } from "../components/button";
-import { DefaultLayout } from "../styles/common";
 
 const Home = () => {
     const [focusStep, setFocusStep] = useState(0);
