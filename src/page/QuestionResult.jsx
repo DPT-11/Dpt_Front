@@ -39,7 +39,7 @@ const QuestionResult = () => {
     }, [onClickCopy]);
 
     const { token } = useParams();
-    const baseUrl = "https://your-christmas-cookie.netlify.app";
+    const baseUrl = "https://hyomk--your-christmas-cookie.netlify.app";
     const url = `${baseUrl}?host=1`;
     return (
         <StyledContainer>
