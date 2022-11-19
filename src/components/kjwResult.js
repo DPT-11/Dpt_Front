@@ -1,4 +1,4 @@
-import resultCookie from "../img/cookie1.png";
+import resultCookie from "../assets/cookie1_5.png";
 import KjwButtonCopy from "./kjwButtonCopy";
 import KjwButtonGotoHome from "./kjwButtonGotoHome";
 import KjwButtonKakao from "./kjwButtonKakao";
