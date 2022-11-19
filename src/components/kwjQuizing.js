@@ -32,7 +32,7 @@ function KjwQuizing(props) {
         display: "flex",
         flexDirection: "column",
         width: "100%",
-        height: "500px",
+        height: "35vh",
         paddingLeft: "40px",
         paddingRight: "40px",
         paddingBottom: "33px",
@@ -53,38 +53,28 @@ function KjwQuizing(props) {
     /*
     const questions = [
         {
-            questionId: 1,
-            question: "무슨 영화1",
-            options: [
-                "멜로",
-                "스릴러",
-                "내가 새로 만든 답안1",
-                "내가 새로 만든 답안2",
-            ],
-            answer: "내가 새로 만든 답안2",
+            "questionId" : 1,
+			"question" : "무슨 영화1",
+			"options" : ["멜로","스릴러", "내가 새로 만든 답안1","내가 새로 만든 답안2"],
+			"answer" : "내가 새로 만든 답안2"
         },
         {
-            questionId: 2,
-            question: "무슨 영화2",
-            options: ["ㄱ", "ㄴ", "ㄷ", "ㄹ"],
-            answer: "ㄹ",
+            "questionId" : 2,
+			"question" : "무슨 영화2",
+			"options" : ["ㄱ","ㄴ","ㄷ","ㄹ"],
+			"answer" : "ㄹ"
         },
         {
-            questionId: 3,
-            question: "무슨 영화3",
-            options: [
-                "멜로",
-                "스릴러",
-                "내가 새로 만든 답안1",
-                "내가 새로 만든 답안2",
-            ],
-            answer: "내가 새로 만든 답안2",
+            "questionId" : 3,
+			"question" : "무슨 영화3",
+			"options" : ["멜로","스릴러","내가 새로 만든 답안1","내가 새로 만든 답안2"],
+			"answer" : "내가 새로 만든 답안2"
         },
         {
-            questionId: 4,
-            question: "무슨 영화4",
-            options: ["ㄱ", "ㄴ", "ㄷ", "ㄹ"],
-            answer: "ㄹ",
+            "questionId" : 4,
+			"question" : "무슨 영화4",
+			"options" : ["ㄱ","ㄴ","ㄷ","ㄹ"],
+			"answer" : "ㄹ"
         },
         {
             "questionId" : 5,
