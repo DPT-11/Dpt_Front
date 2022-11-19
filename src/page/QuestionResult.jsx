@@ -9,6 +9,7 @@ import { StyledContainer } from "./Home.style.js";
 import { CopyButton, KakaoSahreButton } from "../components/button";
 import Decoration from "../components/Decoration";
 
+import { useLocation } from "react-router";
 import { GoHomeButton } from "../components/button/index";
 import { Toast } from "../components/toast";
 import { StyledToastContainer } from "../components/toast/index";
@@ -18,6 +19,8 @@ const QuestionResult = () => {
     const [isCopy, onCopy] = useCopyClipBoard();
     const [onClickCopy, setOnClickCopy] = useState(false);
     const [toastCnt, setToastCnt] = useState(0);
+
+    const { state } = useLocation();
 
     useEffect(() => {
         // eslint-disable-next-line no-lone-blocks

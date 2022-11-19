@@ -1,9 +1,7 @@
-import React from 'react';
-import { useState,useEffect } from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
-import KjwQuizing from '../components/kwjQuizing';
-import axios from 'axios';
-
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import KjwQuizing from "../components/kwjQuizing";
 
 function QuizPlay() {
     const navigator = useNavigate();
@@ -12,41 +10,45 @@ function QuizPlay() {
     const [loading, setLoading] = useState(false); // 로딩 여부
     const [error, setError] = useState(null); // 에러
 
-    const fetchQuiz = async () =>{
-        try{
+    const fetchQuiz = async () => {
+        try {
             setQuiz(null);
             setError(null);
             setLoading(true); //로딩이 시작됨
-            const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
+            const response = await axios.get(
+                "https://jsonplaceholder.typicode.com/todos/1"
+            );
             setQuiz(response.data);
             console.log(response.data);
-        }
-        catch (e){
+        } catch (e) {
             setError(e);
             console.log(e);
         }
         setLoading(false);
     };
 
-    useEffect( () => {
+    useEffect(() => {
         fetchQuiz();
-    },[])
+    }, []);
 
-    if ( loading ) return <span>퀴즈 받아오는 중..</span>
-    if (error) return <span>에러 발생!!</span>
-    if (!quiz) return null;  //users값이 유효하지 않는 경우
+    if (loading) return <span>퀴즈 받아오는 중..</span>;
+    if (error) return <span>에러 발생!!</span>;
+    if (!quiz) return null; //users값이 유효하지 않는 경우
 
     let getParameter = (key) => {
         return new URLSearchParams(window.location.search).get(key);
     };
-    const name= getParameter("name");
+    const name = getParameter("name");
     const goToResult = () => {
-        navigator(params.token+"/quiz/quizResult/?name="+name+"&result="+1);
-    }
-    
-    return(
-        <div className='kjw_body'>
-            <div className='kjw_main'>
+        navigator(
+            params.token + "/quiz/quizResult/?name=" + name + "&result=" + 1,
+            { state: name }
+        );
+    };
+
+    return (
+        <div className="kjw_body">
+            <div className="kjw_main">
                 <KjwQuizing name={name} quizList={quiz} />
             </div>
         </div>

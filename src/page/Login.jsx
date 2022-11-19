@@ -28,7 +28,7 @@ const Login = () => {
         if (true) {
             console.log(name, pwd);
             setToken("1");
-            if (token) navigator(`/${token}/mycookies`);
+            if (token) navigator(`/${token}/mycookies`, { state: name });
         } else {
             setName("");
             setPwd("");

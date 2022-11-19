@@ -30,7 +30,7 @@ const Register = () => {
         if (true) {
             console.log(name, pwd);
             setToken("response");
-            if (token) navigator(`/${token}/cookie`);
+            if (token) navigator(`/${token}/cookie`, { state: name });
         } else {
             setName("");
             setPwd("");
