@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {useNavigate} from 'react-router-dom';
+import { axios } from 'axios';
 
 function KjwStartNameForm(props) {
     const formCss = {
@@ -20,18 +21,20 @@ function KjwStartNameForm(props) {
         marginBottom:"24px",
         textAlign:"center"
     }
-    
+
     const navigator = useNavigate();
     const [input, setInput] = useState("");
+
     const submit=(event)=>{
         event.preventDefault();
     }
     const setInputListener = (e) =>{
         setInput(e.target.value);
     }
+    
     const goToQuiz = () => {
         const name = input;
-        navigator("/guest/quizPlay?name="+name);
+        navigator("/quiz/quizPlay/"+props.owner+"?name="+name);
     }
 
     /*<button className="kjwStartBtn" disabled={!input}>시작</button> */

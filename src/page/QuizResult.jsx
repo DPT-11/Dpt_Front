@@ -8,8 +8,9 @@ function QuizResult() {
     const name= getParameter("name");
     const result = getParameter("result")
     const shareResult = () => {
-        alert("/guest/result?name="+name+result);
+        alert("/quiz/quizResult?name="+name+"&&"+result);
     }
+    
     return(
         <div className='kjw_body'>
             <div className='kjw_main'>
