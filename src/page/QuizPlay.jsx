@@ -41,7 +41,7 @@ function QuizPlay() {
     };
     const name= getParameter("name");
     const goToResult = () => {
-        navigator("/quiz/quizResult/"+params.token+"?name="+name+"&result="+1);
+        navigator(params.token+"/quiz/quizResult/?name="+name+"&result="+1);
     }
     
     return(

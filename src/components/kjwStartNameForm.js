@@ -34,7 +34,7 @@ function KjwStartNameForm(props) {
     
     const goToQuiz = () => {
         const name = input;
-        navigator("/quiz/quizPlay/"+props.owner+"?name="+name);
+        navigator("quizPlay/?name="+name);
     }
 
     /*<button className="kjwStartBtn" disabled={!input}>시작</button> */

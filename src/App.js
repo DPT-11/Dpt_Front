@@ -35,9 +35,9 @@ function App() {
                             element={<QuestionResult />}
                         ></Route>
 
-                        <Route path="/quiz/:token" element={<GuestPage/>}> </Route>
-                        <Route path="/quiz/quizPlay/:token" element={<QuizPlay/>}></Route>
-                        <Route path="/quiz/quizResult/:token" element={<QuizResult/>}></Route>
+                        <Route path="/:token/quiz" element={<GuestPage/>}> </Route>
+                        <Route path="/:token/quiz/quizPlay" element={<QuizPlay/>}></Route>
+                        <Route path="/:token/quiz/quizResult" element={<QuizResult/>}></Route>
                         <Route path="*" element={<h1>Not found</h1>}></Route>
                     </Routes>
                 </MediaDiv>

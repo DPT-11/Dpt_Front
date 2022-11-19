@@ -1,6 +1,6 @@
 import KjwResultCookie from "./kjwResultCookie";
 import KjwQuizingButtonArray from './kjwQuizingButtonArray';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import KjwProgressArray from "./kjwProgressArray";
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -94,6 +94,13 @@ function KjwQuizing(props) {
     const [correctNum, setCorrectNum] = useState(0); // 몇 개 맞았는지
     const [correct, setCorrect] = useState(false);
 
+    useEffect(()=>{
+        if(progress===4){
+            navigator("/"+params.token+"/quiz/quizResult/?name="+props.name+"&&version="+1+"&&result="+correctNum)
+        }
+        console.log("progress",`${progress} / ${correctNum}`)
+    },[progress])
+
     const setProgressListener = (option, answer) => {
         setcheck(true)
         console.log("option",option, "/answer:",answer)
@@ -109,39 +116,15 @@ function KjwQuizing(props) {
         setTimeout(function() {
             if(progress<questions.length-1)
                 setProgress(progress+1)
-            else
-                navigator("/quiz/quizResult/"+params.token+"?name="+props.name+"&&result="+correctNum)
-            console.log(correctNum)
             setcheck(false)
         }, 2000);
     }
-    // const checkListener = (value, a) => {
-    //     setAnswer(a);
-    //     setUserSelect(value);
-    //     setcheck(true);
-    // }
-    // const isTrueFunc = (check) => {
-    //     console.log("userSelect",userSelect, "/ answer",answer)
-    //     if(userSelect){
-    //         if(userSelect === answer){
-    //             //setCorrectNum(prev=>prev+1)
-    //             console.log("정답",correctNum)
-    //             //return <span>정답입니다</span>
-    //         }
-    //         else{
-    //             console.log("오답",correctNum)
-    //             //return <span>오답입니다</span>
-    //         }
-    //     }
-    // }
     
-
-    //<KjwQuizingButtonArray options={questions[progress].options} answer={questions[progress].answer} selectListener={setProgressListener} checkListener={checkListener}/>
     return(
         <div style={{width:"100%", height:"100%",display:"flex", flexDirection:"column",alignItems:"center"}}>
-            <div style={{marginTop:"60px", marginBottom:"24px"}}>
+            <div style={{marginTop:"60px", marginBottom:"24px",height:"366px"}}>
                 <div style={divCss}>{props.name}의 Quiz</div>
-                <KjwResultCookie />
+                <KjwResultCookie version="1" level={correctNum}/>
             </div>
             <div style={secQuestionCss}>
                 <div style={divQuestionCss}>{questions[progress].question}</div>
