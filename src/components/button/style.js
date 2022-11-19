@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import colors from "../../styles/colors";
-import Xbutton from "../../assets/x.svg";
-import HomeImg from "../../assets/home.png";
 
 export const StyledMainButton = styled.button`
     z-index: 100;

@@ -1,9 +1,8 @@
-import GlobalStyle from "./styles/globalStyles";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { MediaDiv } from "./styles/common";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./page/Home";
 import "./App.css";
 import SelectCookie from "./page/SelectCookie";
+import MyCookie from "./page/MyCookie";
 import Question from "./page/Question";
 import QuestionResult from "./page/QuestionResult";
 import Register from "./page/Register";
@@ -12,6 +11,9 @@ import NotFound from "./page/NotFound";
 import GuestPage from "./page/GuestPage";
 import QuizPlay from "./page/QuizPlay";
 import QuizResult from "./page/QuizResult";
+import SelectCookie from "./page/SelectCookie";
+import { MediaDiv } from "./styles/common";
+import GlobalStyle from "./styles/globalStyles";
 
 function App() {
     return (
@@ -46,6 +48,10 @@ function App() {
                             element={<QuizResult />}
                         ></Route>
                         <Route path="*" element={<NotFound />}></Route>
+                        <Route path="/:token/mycookies" element={<MyCookie />}>
+                            {" "}
+                        </Route>
+                        <Route path="*" element={<h1>Not found</h1>}></Route>
                     </Routes>
                 </MediaDiv>
             </Router>

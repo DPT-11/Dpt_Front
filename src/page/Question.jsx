@@ -1,33 +1,35 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
-
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import QuestionHat from "../assets/questionHat.svg";
 
-import ProgressBar from "../components/progress/index";
-import { Toast } from "../components/toast";
-import {
-    AnswerWrapper,
-    QuestionWrapper,
-    StyledQuestionContainer,
-} from "./Question.style";
 import {
     AddButton,
     AnswerButton,
     SecondButton,
 } from "../components/button/index";
 import { AnswerInputField } from "../components/inputField/index";
-import { ToastContainer } from "react-toastify";
+import ProgressBar from "../components/progress/index";
+import { Toast } from "../components/toast";
 import { StyledToastContainer } from "../components/toast/index";
+import { QuestionData } from "../utls/question";
+import {
+    AnswerWrapper,
+    QuestionWrapper,
+    StyledQuestionContainer,
+} from "./Question.style";
 
 const Question = () => {
     const { state } = useLocation();
-    const questions = state.res.map((res) => res.question);
+    const questions = QuestionData[0].questions.map((q, idx) => q.question);
+
+    state.res.map((res) => res.question);
 
     const [focusStep, setFocusStep] = useState(0);
     const [answerState, setAnswerState] = useState([]);
-    const [options, setOptions] = useState(state.res.map((res) => res.options));
+    const [options, setOptions] = useState(
+        QuestionData[0].questions.map((q, idx) => q.option)
+    );
     const [ownAnswer, setOwnAnswer] = useState("");
     const [limitState, setLimitstate] = useState(false);
     const [waitTime, setWaitTime] = useState(false);
@@ -49,7 +51,7 @@ const Question = () => {
             const opt = options[focusStep].indexOf("");
             newOption[focusStep][opt] = ownAnswer;
             setOptions(newOption);
-            onClickAnswer(ownAnswer);
+            // onClickAnswer(ownAnswer);
         }
     }, [ownAnswer]);
 
@@ -107,8 +109,6 @@ const Question = () => {
     };
 
     const onClickProgressItem = (step) => {
-        console.log(step);
-        console.log("focusStep", focusStep);
         if (step < focusStep) {
             //이전
             if (focusStep > 0) {
