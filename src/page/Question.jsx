@@ -46,7 +46,7 @@ const Question = () => {
             const opt = options[focusStep].indexOf("");
             newOption[focusStep][opt] = ownAnswer;
             setOptions(newOption);
-            onClickAnswer(ownAnswer);
+            // onClickAnswer(ownAnswer);
         }
     }, [ownAnswer]);
 
@@ -104,8 +104,6 @@ const Question = () => {
     };
 
     const onClickProgressItem = (step) => {
-        console.log(step);
-        console.log("focusStep", focusStep);
         if (step < focusStep) {
             //이전
             if (focusStep > 0) {

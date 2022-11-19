@@ -1,7 +1,8 @@
 import styled, { css, keyframes } from "styled-components";
 
-import Cookie1 from "../assets/cookie_ver_2.png";
-import Cookie2 from "../assets/cookie_ver_3.png";
+import Cookie1 from "../assets/cookie_3d_1.png";
+import Cookie2 from "../assets/cookie_3d_2.png";
+import Cookie3 from "../assets/cookie_3d_3.png";
 import Oven from "../assets/oven.png";
 import SantaCookie from "../assets/santa_cookie.png";
 const textScale = keyframes`
@@ -116,31 +117,31 @@ export const AnimateCss = css`
 
 const LeftCookieAnimate = keyframes`
    0% {
-        left: 15%;
+        left: 20%;
         opacity : 0;       
     }
     50% {
-        left: 17%;     
+        left: 25%;     
         transform: rotate(30deg);
         animation-delay : 2s ;
     }
     54% {
-        left: 17%;     
+        left: 25%;     
         transform: rotate(20deg);
         animation-delay : 2s ;
     }
     57% {
-        left: 17%;     
+        left: 25%;     
         transform: rotate(30deg);
         animation-delay : 2s ;
     }
     60% {
-        left: 17%;     
+        left: 30%;     
         transform: rotate(20deg);
         animation-delay : 2s ;
     }
     100% {
-        left: 23%;
+        left: 35%;
         transform: rotate(23deg);     
     }
 
@@ -148,31 +149,31 @@ const LeftCookieAnimate = keyframes`
 
 const RightCookieAnimate = keyframes`
    0% {
-        right: 15%;
+        right: 20%;
         opacity : 0;       
     }
     50% {
-        right: 17%;  
+        right: 25%;  
         transform: rotate(-30deg);
         animation-delay : 2s ;
     }
     54% {
-        right: 17%;   
+        right: 25%;   
         transform: rotate(-0deg);
         animation-delay : 2s ;
     }
     57% {
-        right: 17%;      
+        right: 25%;      
         transform: rotate(-30deg);
         animation-delay : 2s ;
     }
     60% {
-        right: 17%;  
+        right: 30%;  
         transform: rotate(-20deg);
         animation-delay : 2s ;
     }
     100% {
-        right: 23%;
+        right: 35%;
         transform: rotate(-23deg);     
     }
 
@@ -260,27 +261,34 @@ export const AnimatCookieImg = styled.div`
 `;
 
 const PopCookieImg = styled.div`
-    width: 90%;
-    height: 90%;
-
+    width: 70%;
+    height: 70%;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    @media screen and (min-width: 480px) {
+        width: 80%;
+        height: 80%;
+    }
 `;
 
 export const CenterCookie = styled(PopCookieImg)`
     background-image: ${`url(${Cookie1})`};
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     z-index: 10;
     animation: ${textScale} 1s;
+    @media screen and (min-width: 480px) {
+        width: 95%;
+        height: 95%;
+    }
 `;
 
 export const LeftCookie = styled(PopCookieImg)`
-    background-image: ${`url(${Cookie2})`};
+    background-image: ${`url(${Cookie3})`};
     position: absolute;
-    left: 23%;
-    /* transform: rotate(30deg); */
+    left: 35%;
+    top: 23%;
     animation: ${LeftCookieAnimate} 3s;
     transform: rotate(23deg);
 `;
@@ -288,7 +296,8 @@ export const LeftCookie = styled(PopCookieImg)`
 export const RightCookie = styled(PopCookieImg)`
     background-image: ${`url(${Cookie2})`};
     position: absolute;
-    right: 23%;
+    right: 35%;
+    top: 23%;
     animation: ${RightCookieAnimate} 3s;
     transform: rotate(-23deg);
 `;

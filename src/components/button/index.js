@@ -1,3 +1,4 @@
+// eslint-disable-next-line jsx-a11y/alt-text
 import CopyImg from "../../assets/copy.png";
 import HomeImg from "../../assets/home.png";
 import Kakao from "../../assets/kakao.png";
@@ -44,7 +45,7 @@ export const AnswerButton = ({
     useEffect(() => {
         if (isAnswered === null || isAnswered !== text) {
             setIsChecked(false);
-        } else if (isAnswered && isAnswered == text) {
+        } else if (isAnswered && isAnswered === text) {
             setIsChecked(true);
         }
     }, [isAnswered]);
@@ -67,6 +68,7 @@ export const AnswerButton = ({
             limit={limit}
         >
             {text}
+
             <img
                 src={Xbutton}
                 ischecked={isChecked}

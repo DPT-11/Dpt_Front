@@ -46,7 +46,7 @@ const Home = () => {
         }, 4000);
         setTimeout(() => {
             setSecondCookie(true);
-        }, 5800);
+        }, 5300);
         setTimeout(() => {
             setSecondState(false);
             setThirdState(true);

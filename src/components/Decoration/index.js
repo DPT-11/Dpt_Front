@@ -21,15 +21,6 @@ const animateDeco = keyframes`
         transition: transform 0.3s;
     }
 `;
-const StyledDecorationDiv = styled.div`
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-position: top center;
-    align-self: center;
-    top: -20px;
-`;
 
 const StyledDecorationAnimateDiv = styled.div`
     position: absolute;
