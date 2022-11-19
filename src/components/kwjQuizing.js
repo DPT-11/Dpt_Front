@@ -3,6 +3,7 @@ import KjwQuizingButtonArray from './kjwQuizingButtonArray';
 import { useState, useEffect } from 'react';
 import KjwProgressArray from "./kjwProgressArray";
 import { useNavigate, useParams } from 'react-router-dom';
+import { QuestionData } from './../utls/question';
 
 function KjwQuizing(props) {
     const divCss = {
@@ -44,7 +45,10 @@ function KjwQuizing(props) {
         alignItems:"center",
         fontSize:"20px"
     }
-    
+    console.log(QuestionData);
+    const testQuestion = QuestionData[0].questions;
+
+    /*
     const questions = [
         {
             "questionId" : 1,
@@ -76,7 +80,7 @@ function KjwQuizing(props) {
 			"options" : ["멜로","스릴러","내가 새로 만든 답안2"],
 			"answer" : "내가 새로 만든 답안2"
         }
-    ]
+    ]*/
 
     const navigator = useNavigate();
     const params = useParams();
@@ -114,14 +118,14 @@ function KjwQuizing(props) {
         }
         // 다음 단계 이동
         setTimeout(function() {
-            if(progress<questions.length-1)
+            if(progress<testQuestion.length-1)
                 setProgress(progress+1)
             setcheck(false)
         }, 2000);
     }
     
-    return(
-        <div style={{width:"100%", height:"100%",display:"flex", flexDirection:"column",alignItems:"center"}}>
+    /*
+    <div style={{width:"100%", height:"100%",display:"flex", flexDirection:"column",alignItems:"center"}}>
             <div style={{marginTop:"60px", marginBottom:"24px",height:"366px"}}>
                 <div style={divCss}>{props.name}의 Quiz</div>
                 <KjwResultCookie version="1" level={correctNum}/>
@@ -132,6 +136,25 @@ function KjwQuizing(props) {
             </div>
             <div style={secAnswerCss}>
                 <KjwQuizingButtonArray check={check} options={questions[progress].options} answer={questions[progress].answer} selectListener={setProgressListener} correct={correct}/>
+                <div style={divAnswerCss}>
+                    {check && correct && <span>정답입니다.</span>}
+                    {check && !correct && <span>오답입니다.</span>}
+                </div>
+            </div>
+        </div>
+    */
+    return(
+        <div style={{width:"100%", height:"100%",display:"flex", flexDirection:"column",alignItems:"center"}}>
+            <div style={{marginTop:"60px", marginBottom:"24px",height:"366px"}}>
+                <div style={divCss}>{props.name}의 Quiz</div>
+                <KjwResultCookie version="1" level={correctNum}/>
+            </div>
+            <div style={secQuestionCss}>
+                <div style={divQuestionCss}>{testQuestion[progress].question}</div>
+                <KjwProgressArray progress={progress}/>
+            </div>
+            <div style={secAnswerCss}>
+                <KjwQuizingButtonArray check={check} options={testQuestion[progress].option} answer={testQuestion[progress].answer} selectListener={setProgressListener} correct={correct}/>
                 <div style={divAnswerCss}>
                     {check && correct && <span>정답입니다.</span>}
                     {check && !correct && <span>오답입니다.</span>}
