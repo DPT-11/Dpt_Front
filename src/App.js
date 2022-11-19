@@ -8,7 +8,6 @@ import Question from "./page/Question";
 import QuestionResult from "./page/QuestionResult";
 import Register from "./page/Register";
 import Login from "./page/Login";
-import NotFound from "./page/NotFound";
 import GuestPage from "./page/GuestPage";
 import QuizPlay from "./page/QuizPlay";
 import QuizResult from "./page/QuizResult";
@@ -40,7 +39,6 @@ function App() {
                         <Route path="/quiz/quizPlay/:token" element={<QuizPlay/>}></Route>
                         <Route path="/quiz/quizResult/:token" element={<QuizResult/>}></Route>
                         <Route path="*" element={<h1>Not found</h1>}></Route>
-                        <Route path="*" element={<NotFound />}></Route>
                     </Routes>
                 </MediaDiv>
             </Router>
