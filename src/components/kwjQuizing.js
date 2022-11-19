@@ -18,7 +18,7 @@ function KjwQuizing(props) {
         display: "flex",
         flexDirection: "column",
         width: "100%",
-        height: "210px",
+        height: "20vh",
         backgroundColor: "#FBF6F1",
     };
     const divQuestionCss = {
@@ -101,18 +101,18 @@ function KjwQuizing(props) {
     const [correct, setCorrect] = useState(false);
 
     useEffect(() => {
-        if (progress === 4) {
-            navigator(
-                "/" +
-                    params.token +
-                    "/quiz/quizResult/?name=" +
-                    props.name +
-                    "&&version=" +
-                    1 +
-                    "&&result=" +
-                    correctNum
-            );
-        }
+        // if (progress === 4) {
+        //     navigator(
+        //         "/" +
+        //             params.token +
+        //             "/quiz/quizResult/?name=" +
+        //             props.name +
+        //             "&&version=" +
+        //             1 +
+        //             "&&result=" +
+        //             correctNum
+        //     );
+        // }
         console.log("progress", `${progress} / ${correctNum}`);
     }, [progress]);
 
@@ -120,11 +120,13 @@ function KjwQuizing(props) {
         setcheck(true);
         console.log("option", option, "/answer:", answer);
         // 정답 체크
+        let isAnswered = false;
         if (option === answer) {
             setCorrectNum((correctNum) => correctNum + 1);
             setCorrect((correct) => (correct = true));
             Toast("정답입니다");
             console.log("정답입니다~", correctNum);
+            isAnswered = true;
         } else {
             setCorrect(false);
             Toast("오답입니다");
@@ -132,6 +134,18 @@ function KjwQuizing(props) {
         // 다음 단계 이동
         setTimeout(function () {
             if (progress < testQuestion.length - 1) setProgress(progress + 1);
+            else {
+                navigator(
+                    "/" +
+                        params.token +
+                        "/quiz/quizResult/?name=" +
+                        props.name +
+                        "&&version=" +
+                        1 +
+                        "&&result=" +
+                        `${isAnswered ? correctNum + 1 : correctNum}`
+                );
+            }
             setcheck(false);
         }, 2000);
     };
