@@ -37,7 +37,7 @@ const QuestionResult = () => {
 
     const { token } = useParams();
     const baseUrl = "https://your-christmas-cookie.netlify.app";
-    const url = `${baseUrl}/1/quiz`;
+    const url = `${baseUrl}?host=1`;
     return (
         <StyledContainer>
             <Decoration />

@@ -1,6 +1,6 @@
 import "animate.css";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { MainButton } from "../components/button";
 import Decoration from "../components/Decoration";
 import { DefaultLayout } from "../styles/common";
@@ -23,11 +23,17 @@ const Home = () => {
     const [secondCookie, setSecondCookie] = useState(false);
 
     const navigator = useNavigate();
-
+    const [searchParams, setSearchParams] = useSearchParams();
     const onClickGotoCreate = () => {
         //TODO API 호출
         navigator("/create");
     };
+
+    useEffect(() => {
+        if (searchParams.get("host")) {
+            navigator(`1/quiz`);
+        }
+    }, []);
 
     useEffect(() => {}, [focusStep]);
     useEffect(() => {
