@@ -12,6 +12,7 @@ import { AnswerInputField } from "../components/inputField/index";
 import ProgressBar from "../components/progress/index";
 import { Toast } from "../components/toast";
 import { StyledToastContainer } from "../components/toast/index";
+import { QuestionData } from "../utls/question";
 import {
     AnswerWrapper,
     QuestionWrapper,
@@ -20,11 +21,15 @@ import {
 
 const Question = () => {
     const { state } = useLocation();
-    const questions = state.res.map((res) => res.question);
+    const questions = QuestionData[0].questions.map((q, idx) => q.question);
+
+    state.res.map((res) => res.question);
 
     const [focusStep, setFocusStep] = useState(0);
     const [answerState, setAnswerState] = useState([]);
-    const [options, setOptions] = useState(state.res.map((res) => res.options));
+    const [options, setOptions] = useState(
+        QuestionData[0].questions.map((q, idx) => q.option)
+    );
     const [ownAnswer, setOwnAnswer] = useState("");
     const [limitState, setLimitstate] = useState(false);
     const [waitTime, setWaitTime] = useState(false);

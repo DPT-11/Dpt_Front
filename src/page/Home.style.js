@@ -261,8 +261,8 @@ export const AnimatCookieImg = styled.div`
 `;
 
 const PopCookieImg = styled.div`
-    width: 70%;
-    height: 70%;
+    width: 75%;
+    height: 75%;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -274,8 +274,8 @@ const PopCookieImg = styled.div`
 
 export const CenterCookie = styled(PopCookieImg)`
     background-image: ${`url(${Cookie1})`};
-    width: 80%;
-    height: 80%;
+    width: 85%;
+    height: 85;
     z-index: 10;
     animation: ${textScale} 1s;
     @media screen and (min-width: 480px) {
