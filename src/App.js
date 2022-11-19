@@ -36,23 +36,6 @@ function App() {
                             path="/:token/share"
                             element={<QuestionResult />}
                         ></Route>
-
-                        <Route path=":token/quiz" element={<GuestPage />}>
-                            {" "}
-                        </Route>
-                        <Route
-                            path="/quiz/quizPlay/:token"
-                            element={<QuizPlay />}
-                        ></Route>
-                        <Route
-                            path="/quiz/quizResult/:token"
-                            element={<QuizResult />}
-                        ></Route>
-
-                        <Route path="*" element={<NotFound />}></Route>
-                        <Route path="/:token/mycookies" element={<MyCookie />}>
-                            {" "}
-                        </Route>
                     </Routes>
                 </MediaDiv>
             </Router>

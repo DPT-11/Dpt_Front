@@ -5,7 +5,7 @@ function KjwButtonGotoHome() {
     const navigator = useNavigate();
     const params = useParams();
     const goToHome=()=>{
-        navigator("/quiz/"+params.token);
+        navigator("/"+params.token+"/quiz/");
     }
     return (
         <>
