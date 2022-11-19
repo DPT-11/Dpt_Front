@@ -1,6 +1,6 @@
+import { useEffect } from "react";
 import styled, { css } from "styled-components";
 import colors from "./colors";
-import { useEffect } from "react";
 
 export const hideScrollbar = css`
     -ms-overflow-style: none; /* IE and Edge */
@@ -18,6 +18,7 @@ export const MediaDiv = styled.div`
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    background-color: ${colors.bgColor};
     @media screen and (max-width: 768px) {
         width: 100%;
     }
@@ -42,4 +43,26 @@ export const ContentDiv = () => {
     }, []);
 
     return <StyledContentDiv></StyledContentDiv>;
+};
+
+const DefaultDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    height: calc(var(--vh) * 1 * 100 - 54px);
+    width: 100%;
+    background-color: transparent;
+`;
+
+export const DefaultLayout = ({ children }) => {
+    const handleResize = () => {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty("--vh", `${vh}px`);
+    };
+
+    useEffect(() => {
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+    return <DefaultDiv>{children}</DefaultDiv>;
 };

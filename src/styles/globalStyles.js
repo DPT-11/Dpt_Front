@@ -1,5 +1,7 @@
 import { createGlobalStyle, css } from "styled-components";
 import reset from "styled-reset";
+import colors from "./colors";
+
 
 const customReset = css`
     *,
@@ -77,14 +79,23 @@ const GlobalStyle = createGlobalStyle`
   ${reset}
   ${customReset}
   @font-face {
-    font-family: 'Noto Sans KR', sans-serif;
-    src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap') format('woff');
+    /* font-family: 'Gamja Flower', cursive !important;
+    src: url('../src/font/GamjaFlower-Regular.ttf') format('ttf'),url('../src/font/GamjaFlower-Regular.woff') format('woff'),url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap'); */
+    
+    /* font-family: 'Gamja Flower', cursive !important; */
+    /* font-family: 'NanumSeHwaCe'!important; */
+    //src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_08@1.0/Mugunghwa.woff') format('woff');
+    font-family: 'Gamja Flower', cursive !important;
     font-weight: 400;
     font-style: normal;
   }
   * {
-    font-family: 'Noto Sans KR', sans-serif !important;
+    /* font-family: 'Gamja Flower' , cursive !important; */
+    //font-family: 'NanumSeHwaCe'  !important;
+    font-family: 'Gamja Flower', cursive !important; 
     font-style: normal;
+  }
+  * {
     letter-spacing: -0.02em;
     user-select: none;
     -webkit-touch-callout: none;
@@ -94,6 +105,7 @@ const GlobalStyle = createGlobalStyle`
 
   .container {
     padding: 0 20px;
+    background-color: ${colors.bgColor};
   }
 `;
 

@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Noto+Sans+KR&display=swap');
+/*font-family: 'Gamja Flower', cursive;
+font-family: 'Noto Sans KR', sans-serif;*/
+
+.kjw_body{
+    display: flex;
+    height: 100vh;
+    background-color: #F7EEE5;
+    justify-content: center;
+}
+.kjw_main{
+    display: flex;
+    width: 430px;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+.kjw_main > img{
+    width: fit-content;
+}
+.kjw_start_title{
+    font-family: 'Gamja Flower', cursive;
+    font-size: 40px;
+    margin-top: 24px;
+    margin-bottom: 19px;
+}
+.kjw_start_content{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    margin-bottom: 36px;
+    text-align: center;
+    line-height: 38px;
+}
+.kjwStartBtn {
+    width:127px;
+    height:50px;
+    border-radius:20px;
+    font-family: 'Gamja Flower', cursive;
+    font-size: 24px;
+    margin-bottom:49px;
+    text-align:center;
+    background-color: #D43C2F;
+    color:white;
+}
+.kjwStartBtn:disabled{
+    background-color: #ffffff;
+    color: #D43C2F;
+}
+
+.kjwQuizingBtn{
+    width: 352px;
+    height: 50px;
+    background-color: #ffffff00;
+    border: solid 1px #B3ACAC;
+    border-radius: 30px;
+    font-family: "'Gamja Flower', cursive";
+    font-size:25px;
+    color:"black";
+    text-align:"center";
+}
