@@ -1,25 +1,16 @@
 import KjwQuizingButton from './kjwQuizingButton';
+import { useState } from 'react';
 
-function KjwQuizingButtonArray(){
-    const divAnswerCss={
-        display:"flex",
-        backgroundColor:"#FBF6F1",
-        width:"100%",
-        height:"41px",
-        alignSelf:"flex-end",
-        justifyContent : "center",
-        alignItems:"center"
-    }
-
+function KjwQuizingButtonArray(props){
     return(
-        <div style={{height:"100%", display:"flex", flexDirection:"column", justifyContent:"space-between", paddingTop:"50px"}}>
-            <KjwQuizingButton />
-            <KjwQuizingButton />
-            <KjwQuizingButton />
-            <KjwQuizingButton />
-            <div style={divAnswerCss}>
-                정답 or 오답
-            </div>
+        <div style={{height:"100%", display:"flex", flexDirection:"column", justifyContent:"space-between", paddingTop:"50px", paddingBottom:"30px"}}>
+            {props.options.map((option, index) =>{
+                return(
+                    //<KjwQuizingButton key={index} option={option} answer={props.answer} selesctListener={props.selectListener} checkListener={props.checkListener}/>
+                    <KjwQuizingButton check={props.check} key={index} option={option} answer={props.answer} selesctListener={props.selectListener}/>
+                )
+            })}
+            
         </div>
     );
 }

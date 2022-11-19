@@ -1,38 +1,17 @@
 import "animate.css";
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
-import "react-toastify/dist/ReactToastify.css";
-
-import { Toast } from "../components/toast";
-import useCopyClipBoard from "../utls/useCopyclipBoard";
+import React from "react";
 
 import KjwResult from "../components/kjwResult";
+function QuizResult() {
+    let getParameter = (key) => {
+        return new URLSearchParams(window.location.search).get(key);
+    };
+    const name = getParameter("name");
+    const result = getParameter("result");
+    const shareResult = () => {
+        alert("/quiz/quizResult?name=" + name + "&&" + result);
+    };
 
-const QuizResult = ({ name, result }) => {
-    const [isCopy, onCopy] = useCopyClipBoard();
-    const [onClickCopy, setOnClickCopy] = useState(false);
-    const [toastCnt, setToastCnt] = useState(0);
-
-    useEffect(() => {
-        // eslint-disable-next-line no-lone-blocks
-        {
-            if (toastCnt > 0) return;
-            setTimeout(() => {
-                if (onClickCopy && toastCnt === 0) {
-                    Toast("링크가 복사되었습니다");
-                    setTimeout(() => {
-                        setOnClickCopy(false);
-                        setToastCnt(0);
-                    }, 1200);
-                }
-            }, 90);
-        }
-    }, [onClickCopy]);
-
-    const { token } = useParams();
-    const baseUrl = "http://localhost:3000";
-    const url = `${baseUrl}/quiz/${token}`;
     return (
         <div className="kjw_body">
             <div className="kjw_main">
@@ -40,5 +19,5 @@ const QuizResult = ({ name, result }) => {
             </div>
         </div>
     );
-};
+}
 export default QuizResult;
