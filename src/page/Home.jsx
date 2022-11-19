@@ -157,7 +157,9 @@ const Home = () => {
                     <div style={{ width: "70%", marginTop: "3vh" }}>
                         <MainButton
                             text={"내 쿠키 보러가기"}
-                            onClick={onClickGotoCreate}
+                            onClick={() => {
+                                navigator("/1/mycookies");
+                            }}
                         />
                     </div>
                 </div>

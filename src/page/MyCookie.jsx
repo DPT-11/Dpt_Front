@@ -1,7 +1,8 @@
 import React from "react";
-import { StyledContainer } from "./Home.style";
-import { Card } from "../components/card";
 import { GoHomeButton } from "../components/button";
+import { Card } from "../components/card";
+import { StyledContainer } from "./Home.style";
+
 const MyCookie = () => {
     return (
         <StyledContainer>
@@ -17,7 +18,14 @@ const MyCookie = () => {
                 }}
             >
                 <h2>To. 박소영</h2>
-                <Card />
+                <Card
+                    list={[
+                        { from: "김효민", id: 1, score: 4 },
+                        { from: "조서현", id: 1, score: 3 },
+                        { from: "김지원", id: 1, score: 5 },
+                        { from: "김진우", id: 1, score: 0 },
+                    ]}
+                />
                 <GoHomeButton />
             </div>
         </StyledContainer>

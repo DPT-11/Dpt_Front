@@ -3,18 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import "react-toastify/dist/ReactToastify.css";
-import ResultCookie from "../assets/santa_cookie.svg";
-import { StyledContainer } from "./Home.style.js";
 
-import { CopyButton, KakaoSahreButton } from "../components/button";
-import Decoration from "../components/Decoration";
-
-import { GoHomeButton } from "../components/button/index";
 import { Toast } from "../components/toast";
-import { StyledToastContainer } from "../components/toast/index";
 import useCopyClipBoard from "../utls/useCopyclipBoard";
 
-const QuizResult = () => {
+import KjwResult from "../components/kjwResult";
+
+const QuizResult = ({ name, result }) => {
     const [isCopy, onCopy] = useCopyClipBoard();
     const [onClickCopy, setOnClickCopy] = useState(false);
     const [toastCnt, setToastCnt] = useState(0);
@@ -45,5 +40,5 @@ const QuizResult = () => {
             </div>
         </div>
     );
-}
+};
 export default QuizResult;
