@@ -1,60 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Noto+Sans+KR&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Noto+Sans+KR&display=swap");
 /*font-family: 'Gamja Flower', cursive;
 font-family: 'Noto Sans KR', sans-serif;*/
 
-.kjw_body{
+.kjw_body {
     display: flex;
     height: 100vh;
-    background-color: #F7EEE5;
+    width: 100%;
+    background-color: #f7eee5;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
-.kjw_main{
+.kjw_main {
     display: flex;
-    width: 430px;
+    width: 100%;
     height: 100%;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
-.kjw_main > img{
+.kjw_main > img {
     width: fit-content;
 }
-.kjw_start_title{
-    font-family: 'Gamja Flower', cursive;
+.kjw_start_title {
+    font-family: "Gamja Flower", cursive;
     font-size: 40px;
     margin-top: 24px;
     margin-bottom: 19px;
 }
-.kjw_start_content{
-    font-family: 'Noto Sans KR', sans-serif;
+.kjw_start_content {
+    font-family: "Noto Sans KR", sans-serif;
     font-size: 18px;
     margin-bottom: 36px;
     text-align: center;
     line-height: 38px;
 }
 .kjwStartBtn {
-    width:127px;
-    height:50px;
-    border-radius:20px;
-    font-family: 'Gamja Flower', cursive;
+    width: 127px;
+    height: 50px;
+    border-radius: 20px;
+    font-family: "Gamja Flower", cursive;
     font-size: 24px;
-    margin-bottom:49px;
-    text-align:center;
-    background-color: #D43C2F;
-    color:white;
+    margin-bottom: 49px;
+    text-align: center;
+    background-color: #d43c2f;
+    color: white;
 }
-.kjwStartBtn:disabled{
+.kjwStartBtn:disabled {
     background-color: #ffffff;
-    color: #D43C2F;
+    color: #d43c2f;
 }
 
-.kjwQuizingBtn{
-    width: 352px;
-    height: 50px;
+.kjwQuizingBtn {
+    width: 80%;
+    padding: 0.7rem;
     background-color: #ffffff00;
-    border: solid 1px #B3ACAC;
+    border: solid 1px #b3acac;
     border-radius: 30px;
     font-family: "'Gamja Flower', cursive";
-    font-size:25px;
-    color:"black";
-    text-align:"center";
+    font-size: 1.5rem;
+    color: "black";
+    text-align: "center";
 }

@@ -1,19 +1,19 @@
 import ovenGroup from "../img/ovenGroup1.png";
-import KjwImgHeader from "./kjwImgHeader";
+import Decoration from "./Decoration/index";
 import KjwStartContent from "./kjwStartContent";
 import KjwStartNameForm from "./kjwStartNameForm";
 
 function KjwStart(props) {
     return (
         <>
-            <KjwImgHeader />
+            <Decoration />
             <div className="kjw_start_title">네가 만든 쿠키</div>
             <KjwStartContent name={"김진우"} />
             <div
                 style={{
-                    width: "100%",
                     alignItem: "left",
                     marginBottom: "70px",
+                    alignContent: "self",
                 }}
             >
                 <img src={ovenGroup} alt="오븐 쿠키" />

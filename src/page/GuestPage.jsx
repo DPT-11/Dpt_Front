@@ -1,4 +1,5 @@
 import React from "react";
+import Decoration from "../components/Decoration";
 import KjwStart from "./../components/kjwStart";
 
 import axios from "axios";
@@ -37,7 +38,11 @@ function GuestPage() {
     if (!user) return null; //users값이 유효하지 않는 경우
 
     return (
-        <div className="kjw_body" style={{ height: "120vh" }}>
+        <div
+            className="kjw_body"
+            style={{ height: "120vh", width: "100%", position: "relative" }}
+        >
+            <Decoration />
             <div className="kjw_main">
                 <KjwStart owner={user.userId} />
             </div>

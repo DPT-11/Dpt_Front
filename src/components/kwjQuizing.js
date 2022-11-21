@@ -22,6 +22,7 @@ function KjwQuizing(props) {
         backgroundColor: "#FBF6F1",
     };
     const divQuestionCss = {
+        width: "100%",
         display: "flex",
         height: "100%",
         fontSize: "25px",
@@ -50,40 +51,6 @@ function KjwQuizing(props) {
     console.log(QuestionData);
     const testQuestion = QuestionData[0].questions;
 
-    /*
-    const questions = [
-        {
-            "questionId" : 1,
-			"question" : "무슨 영화1",
-			"options" : ["멜로","스릴러", "내가 새로 만든 답안1","내가 새로 만든 답안2"],
-			"answer" : "내가 새로 만든 답안2"
-        },
-        {
-            "questionId" : 2,
-			"question" : "무슨 영화2",
-			"options" : ["ㄱ","ㄴ","ㄷ","ㄹ"],
-			"answer" : "ㄹ"
-        },
-        {
-            "questionId" : 3,
-			"question" : "무슨 영화3",
-			"options" : ["멜로","스릴러","내가 새로 만든 답안1","내가 새로 만든 답안2"],
-			"answer" : "내가 새로 만든 답안2"
-        },
-        {
-            "questionId" : 4,
-			"question" : "무슨 영화4",
-			"options" : ["ㄱ","ㄴ","ㄷ","ㄹ"],
-			"answer" : "ㄹ"
-        },
-        {
-            "questionId" : 5,
-			"question" : "무슨 영화5",
-			"options" : ["멜로","스릴러","내가 새로 만든 답안2"],
-			"answer" : "내가 새로 만든 답안2"
-        }
-    ]*/
-
     const navigator = useNavigate();
     const params = useParams();
     const [progress, setProgress] = useState(0);
@@ -99,22 +66,9 @@ function KjwQuizing(props) {
     const [answer, setAnswer] = useState(""); // 현재 답안
     const [correctNum, setCorrectNum] = useState(0); // 몇 개 맞았는지
     const [correct, setCorrect] = useState(false);
+    const [waitTime, setWaitTime] = useState(false);
 
-    useEffect(() => {
-        // if (progress === 4) {
-        //     navigator(
-        //         "/" +
-        //             params.token +
-        //             "/quiz/quizResult/?name=" +
-        //             props.name +
-        //             "&&version=" +
-        //             1 +
-        //             "&&result=" +
-        //             correctNum
-        //     );
-        // }
-        console.log("progress", `${progress} / ${correctNum}`);
-    }, [progress]);
+    useEffect(() => {}, [progress]);
 
     const setProgressListener = (option, answer) => {
         setcheck(true);
@@ -150,31 +104,6 @@ function KjwQuizing(props) {
         }, 2000);
     };
 
-    /*
-    <div style={{width:"100%", height:"100%",display:"flex", flexDirection:"column",alignItems:"center"}}>
-            <div style={{marginTop:"60px", marginBottom:"24px",height:"366px"}}>
-                <div style={divCss}>{props.name}의 Quiz</div>
-                <KjwResultCookie version="1" level={correctNum} />
-            </div>
-            <div style={secQuestionCss}>
-                <div style={divQuestionCss}>{questions[progress].question}</div>
-                <KjwProgressArray progress={progress} />
-            </div>
-            <div style={secAnswerCss}>
-                <KjwQuizingButtonArray
-                    check={check}
-                    options={questions[progress].options}
-                    answer={questions[progress].answer}
-                    selectListener={setProgressListener}
-                    correct={correct}
-                />
-                <div style={divAnswerCss}>
-                    {check && correct && <span>정답입니다.</span>}
-                    {check && !correct && <span>오답입니다.</span>}
-                </div>
-            </div>
-        </div>
-    */
     return (
         <div
             style={{
@@ -183,16 +112,16 @@ function KjwQuizing(props) {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                pointerEvents: `${check ? "none" : "auto"}`,
             }}
         >
             <div
                 style={{
                     marginTop: "60px",
                     marginBottom: "24px",
-                    height: "366px",
                 }}
             >
-                <div style={divCss}>{props.name}의 Quiz</div>
+                <div style={divCss}>김진우의 Quiz</div>
                 <KjwResultCookie version="1" level={correctNum} />
             </div>
             <div style={secQuestionCss}>
@@ -211,7 +140,7 @@ function KjwQuizing(props) {
                     correct={correct}
                 />
             </div>
-            <StyledToastContainer />
+            <StyledToastContainer limit={1} />
         </div>
     );
 }

@@ -16,7 +16,7 @@ const StyledCardContainer = styled.div`
     background-size: contain;
     background-position: center;
     position: relative;
-    width: 80%;
+    min-width: 80%;
     height: 60%;
     margin: 0 auto;
 
@@ -93,15 +93,25 @@ const StyledName = styled.p`
 
 const StyledScore = styled.p`
     position: absolute;
-    left: 25%;
-    top: 10%;
-    /* transform: translate(-25%, -10%); */
+    top: 17%;
+    transform: translate(-25%, -10%);
     font-size: 1.5rem;
-
+    width: 55%;
+    text-align: center;
     @media screen and (min-width: 480px) {
         right: 30%;
         bottom: 10%;
     }
+`;
+
+const StyledComment = styled.div`
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -20%);
+    width: 55%;
+    text-align: center;
+    font-size: 1.5rem;
 `;
 
 export const Card = ({ list }) => {
@@ -117,6 +127,7 @@ export const Card = ({ list }) => {
     return (
         <StyledCardContainer>
             <StyledArrowWrapper>
+                <StyledComment>"메리크리스마스"</StyledComment>
                 {focusIdx === 0 ? null : (
                     <StyledLeftArrow
                         onClick={() => {
@@ -134,9 +145,8 @@ export const Card = ({ list }) => {
                     />
                 ) : null}
                 <StyledName>From. {cookies[focusIdx].from}</StyledName>
+                <StyledScore>{cookies[focusIdx].score}/5</StyledScore>
             </StyledArrowWrapper>
-            <StyledScore>{cookies[focusIdx].score}/5</StyledScore>
-            {}
             <img id="card-cookie-img" src={ImgList[focusIdx]} />
         </StyledCardContainer>
     );

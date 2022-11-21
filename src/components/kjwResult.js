@@ -1,14 +1,11 @@
-import resultCookie from "../assets/cookie1_5.png";
 import KjwButtonCopy from "./kjwButtonCopy";
 import KjwButtonGotoHome from "./kjwButtonGotoHome";
 import KjwButtonKakao from "./kjwButtonKakao";
-import KjwImgHeader from "./kjwImgHeader";
-import KjwResultCookie from './kjwResultCookie';
+import KjwResultCookie from "./kjwResultCookie";
 
 function KjwResult(props) {
     return (
         <>
-            <KjwImgHeader />
             <span
                 style={{
                     height: "38px",
@@ -18,7 +15,7 @@ function KjwResult(props) {
             >
                 {props.name}님 퀴즈 결과
             </span>
-            <KjwResultCookie version={props.version} level={props.result}/>
+            <KjwResultCookie version={props.version} level={props.result} />
             <span
                 style={{
                     height: "38px",
@@ -38,10 +35,18 @@ function KjwResult(props) {
             >
                 친구에게 링크를 공유해보세요!
             </span>
-            <KjwButtonCopy />
-            <span style={{ height: "19px" }} />
-            <KjwButtonKakao name={props.name} result={props.result} />
-            <span style={{ height: "49px" }} />
+            <div
+                style={{
+                    width: "70%",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "1rem",
+                }}
+            >
+                <KjwButtonCopy />
+                <KjwButtonKakao name={props.name} result={props.result} />
+                <span style={{ height: "49px" }} />
+            </div>
             <KjwButtonGotoHome />
         </>
     );
