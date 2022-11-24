@@ -13,7 +13,7 @@ import { useLocation } from "react-router";
 import { GoHomeButton } from "../components/button/index";
 import { Toast } from "../components/toast";
 import { StyledToastContainer } from "../components/toast/index";
-import useCopyClipBoard from "../utls/useCopyclipBoard";
+import useCopyClipBoard from "../utils/useCopyclipBoard";
 
 const QuestionResult = () => {
     const [isCopy, onCopy] = useCopyClipBoard();

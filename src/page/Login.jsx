@@ -28,7 +28,11 @@ const Login = () => {
         if (true) {
             console.log(name, pwd);
             setToken("1");
-            if (token) navigator(`/${token}/mycookies`, { state: name });
+            const cookieId = 1;
+            if (token)
+                navigator(`/${token}/mycookies`, {
+                    state: { name: name, cookieId: cookieId },
+                });
         } else {
             setName("");
             setPwd("");

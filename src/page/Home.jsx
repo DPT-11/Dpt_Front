@@ -31,7 +31,7 @@ const Home = () => {
 
     useEffect(() => {
         if (searchParams.get("host")) {
-            navigator(`1/quiz`);
+            navigator(`${searchParams.get("host")}/quiz`);
         }
     }, []);
 

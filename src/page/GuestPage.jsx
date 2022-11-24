@@ -1,5 +1,5 @@
 import React from "react";
-import KjwStart from "./../components/kjwStart";
+import KjwStart from "../components/kjwStart";
 
 import axios from "axios";
 import { useEffect, useState } from "react";

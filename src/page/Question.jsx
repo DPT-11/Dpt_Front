@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { requestSetQuestions } from "../api";
 
 import QuestionHat from "../assets/questionHat.svg";
 
@@ -12,7 +13,7 @@ import { AnswerInputField } from "../components/inputField/index";
 import ProgressBar from "../components/progress/index";
 import { Toast } from "../components/toast";
 import { StyledToastContainer } from "../components/toast/index";
-import { QuestionData } from "../utls/question";
+import { QuestionData } from "../utils/question";
 import {
     AnswerWrapper,
     QuestionWrapper,
@@ -21,14 +22,16 @@ import {
 
 const Question = () => {
     const { state } = useLocation();
-    const questions = QuestionData[0].questions.map((q, idx) => q.question);
-
-    state.res.map((res) => res.question);
+    const cookieId = state.cookieId - 1;
+    const name = state.name;
+    const questions = QuestionData[cookieId].questions.map(
+        (q, idx) => q.question
+    );
 
     const [focusStep, setFocusStep] = useState(0);
     const [answerState, setAnswerState] = useState([]);
     const [options, setOptions] = useState(
-        QuestionData[0].questions.map((q, idx) => q.option)
+        QuestionData[cookieId].questions.map((q, idx) => q.option)
     );
     const [ownAnswer, setOwnAnswer] = useState("");
     const [limitState, setLimitstate] = useState(false);
@@ -36,8 +39,6 @@ const Question = () => {
 
     const { token } = useParams();
     const navigator = useNavigate();
-
-    const name = "산타"; //state.res.name;
 
     useEffect(() => {}, [focusStep, options, limitState]);
 
@@ -51,8 +52,12 @@ const Question = () => {
             const opt = options[focusStep].indexOf("");
             newOption[focusStep][opt] = ownAnswer;
             setOptions(newOption);
+            setWaitTime(true);
             // onClickAnswer(ownAnswer);
         }
+        setTimeout(() => {
+            setWaitTime(false);
+        }, 1000);
     }, [ownAnswer]);
 
     const onClickDelete = (option) => {
@@ -78,12 +83,10 @@ const Question = () => {
         }
         setAnswerState(newArray);
 
-        console.log(options[focusStep]);
         if (
             focusStep < 4 &&
             options[focusStep].filter((f) => f !== "").length >= 2
         ) {
-            console.log(options[focusStep]);
             setWaitTime(true);
             setTimeout(() => {
                 setFocusStep((prev) => prev + 1);
@@ -123,6 +126,18 @@ const Question = () => {
         }
     };
 
+    const onClickSubmit = () => {
+        console.log(token);
+        requestSetQuestions(token, options, answerState)
+            .then((res) => {
+                console.log(res);
+                navigator(`/${token}/share`);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
     return (
         <StyledQuestionContainer
             style={{ pointerEvents: `${waitTime ? "none" : "auto"}` }}
@@ -141,7 +156,9 @@ const Question = () => {
                 />
             </div>
             {/* {(answerState.length> focusStep+1 ) && focusStep == ques} */}
-            <AnswerWrapper>
+            <AnswerWrapper
+                style={{ pointerEvents: `${waitTime ? "none" : "auto"}` }}
+            >
                 {options[focusStep].map((opt, idx) => {
                     if (opt !== "")
                         return (
@@ -189,9 +206,7 @@ const Question = () => {
                 <SecondButton
                     text={"완료"}
                     disabled={false}
-                    onClick={() => {
-                        navigator(`/${token}/share`);
-                    }}
+                    onClick={() => onClickSubmit()}
                 />
             </div>
         </StyledQuestionContainer>

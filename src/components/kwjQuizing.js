@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { QuestionData } from "./../utls/question";
+import { QuestionData } from "../utils/question";
 import KjwProgressArray from "./kjwProgressArray";
 import KjwQuizingButtonArray from "./kjwQuizingButtonArray";
 import KjwResultCookie from "./kjwResultCookie";
