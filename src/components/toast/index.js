@@ -1,10 +1,11 @@
-import colors from "../../styles/colors";
 import { toast, ToastContainer } from "react-toastify";
 import styled from "styled-components";
+import colors from "../../styles/colors";
 
 const ToastComponent = ({ msg }) => {
     return <div>{msg}</div>;
 };
+
 export const StyledToastContainer = styled(ToastContainer).attrs({
     className: "toast-container",
     toastClassName: "toast",
@@ -35,7 +36,8 @@ export const StyledToastContainer = styled(ToastContainer).attrs({
     }
 
     .toast {
-        background: ${colors.mainRed};
+        background: ${(props) =>
+            props.toastColor ? props.toastColor : colors.mainRed};
         color: white;
         box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.15);
         border-radius: 30px;

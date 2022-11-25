@@ -22,7 +22,7 @@ import {
 
 const Question = () => {
     const { state } = useLocation();
-    const cookieId = state.cookieId - 1;
+    const cookieId = state.cookieId;
     const name = state.name;
     const questions = QuestionData[cookieId].questions.map(
         (q, idx) => q.question
@@ -131,7 +131,7 @@ const Question = () => {
         requestSetQuestions(token, options, answerState)
             .then((res) => {
                 console.log(res);
-                navigator(`/${token}/share`);
+                navigator(`/${token}/share`, { state: { cookieId: cookieId } });
             })
             .catch((err) => {
                 console.log(err);
@@ -155,7 +155,7 @@ const Question = () => {
                     itemListener={onClickProgressItem}
                 />
             </div>
-            {/* {(answerState.length> focusStep+1 ) && focusStep == ques} */}
+
             <AnswerWrapper
                 style={{ pointerEvents: `${waitTime ? "none" : "auto"}` }}
             >

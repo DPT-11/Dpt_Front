@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import "react-toastify/dist/ReactToastify.css";
-import ResultCookie from "../assets/cookie_3d_1.png";
 import { StyledContainer } from "./Home.style.js";
 
 import { CopyButton, KakaoSahreButton } from "../components/button";
@@ -23,6 +22,7 @@ const QuestionResult = () => {
     const { state } = useLocation();
 
     useEffect(() => {
+        console.log(state);
         // eslint-disable-next-line no-lone-blocks
         {
             if (toastCnt > 0) return;
@@ -40,17 +40,17 @@ const QuestionResult = () => {
 
     const { token } = useParams();
     const baseUrl = "https://your-christmas-cookie.netlify.app";
-    const url = `${baseUrl}?host=1`;
+    const url = `${baseUrl}?host=${token}`;
     return (
         <StyledContainer>
             <Decoration />
             <h1>퀴즈 준비 완료</h1>
+
             <img
-                style={{
-                    width: "25%",
-                }}
-                src={ResultCookie}
-            ></img>
+                src={require(`../assets/cookie${state.cookieId}_5.png`)}
+                alt="쿠키 결과"
+                style={{ width: "25%" }}
+            />
             <h2 style={{ marginTop: "10%" }}>친구에게 링크를 공유해보세요!</h2>
             <div
                 style={{
@@ -68,7 +68,7 @@ const QuestionResult = () => {
                 <CopyButton
                     url={url}
                     onClick={() => {
-                        console.log("copy");
+                        console.log("copy", url);
                         onCopy(url);
                         setOnClickCopy(true);
                     }}

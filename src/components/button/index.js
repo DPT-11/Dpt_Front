@@ -6,9 +6,11 @@ import Xbutton from "../../assets/x.svg";
 import { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
+import InputField from "../inputField";
 import {
     StyledAddButton,
     StyledAnswerButton,
+    StyledCommentButton,
     StyledCopyButton,
     StyledHomeButton,
     StyledKaKaoButton,
@@ -91,7 +93,7 @@ export const AddButton = ({ onClick, isVisible }) => {
 export const CopyButton = ({ url, onClick }) => {
     return (
         <StyledCopyButton onClick={() => onClick()}>
-            {url.substring(0, url.indexOf("=") + 10)}...
+            링크복사
             <img src={CopyImg} />
         </StyledCopyButton>
     );
@@ -154,5 +156,44 @@ export const GoHomeButton = () => {
                 navigator("/");
             }}
         ></StyledHomeButton>
+    );
+};
+
+export const CommentButton = ({ onClickSubmit, inputFocus }) => {
+    const [msg, setMsg] = useState("");
+    const [focusStatus, setFocusStatus] = useState(inputFocus);
+    return (
+        <>
+            {focusStatus ? (
+                <div style={{ display: "flex", width: "100%" }}>
+                    <InputField
+                        hint={"메리크리스마스(최대 7자)"}
+                        type={"text"}
+                        value={msg}
+                        listener={setMsg}
+                        validation={(v) => {
+                            return v.length <= 7;
+                        }}
+                    />
+                    <button
+                        style={{ width: "20%" }}
+                        onClick={() => {
+                            setFocusStatus(false);
+                            onClickSubmit(msg);
+                        }}
+                    >
+                        작성완료
+                    </button>
+                </div>
+            ) : (
+                <StyledCommentButton
+                    onClick={() => {
+                        setFocusStatus(true);
+                    }}
+                >
+                    {msg ? msg : "크리스마스 메세지 남기기"}
+                </StyledCommentButton>
+            )}
+        </>
     );
 };

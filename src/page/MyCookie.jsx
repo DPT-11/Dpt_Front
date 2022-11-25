@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { GoHomeButton } from "../components/button";
 import { Card, StyledAnswerButton } from "../components/card";
@@ -8,6 +8,11 @@ import { StyledContainer } from "./Home.style";
 const MyCookie = () => {
     const [answerState, setAnswerState] = useState(false);
     const { state } = useLocation();
+    const guests = state.guests;
+    const cookieId = state.cookieId;
+    useEffect(() => {
+        console.log(guests);
+    }, []);
     return (
         <StyledContainer>
             <div
@@ -21,70 +26,48 @@ const MyCookie = () => {
                     gap: "2rem",
                 }}
             >
-                <h2>To.{}</h2>
-                <Card
-                    list={[
-                        {
-                            from: "김효민",
-                            id: 1,
-                            score: 4,
-                            answer: [
-                                { answer: "1", isCorrect: false },
-                                { answer: "2", isCorrect: true },
-                                { answer: "3", isCorrect: true },
-                                { answer: "4", isCorrect: false },
-                                { answer: "5", isCorrect: false },
-                            ],
-                        },
-                        {
-                            from: "조서현",
-                            id: 1,
-                            score: 3,
-                            answer: [
-                                { answer: "1", isCorrect: false },
-                                { answer: "2", isCorrect: false },
-                                { answer: "3", isCorrect: true },
-                                { answer: "4", isCorrect: true },
-                                { answer: "5", isCorrect: false },
-                            ],
-                        },
-                        {
-                            from: "김지원",
-                            id: 1,
-                            score: 5,
-                            answer: [
-                                { answer: "1", isCorrect: false },
-                                { answer: "2", isCorrect: true },
-                                { answer: "3", isCorrect: true },
-                                { answer: "4", isCorrect: false },
-                                { answer: "5", isCorrect: false },
-                            ],
-                        },
-                        {
-                            from: "김진우",
-                            id: 1,
-                            score: 0,
-                            answer: [
-                                { answer: "1", isCorrect: false },
-                                { answer: "2", isCorrect: true },
-                                { answer: "3", isCorrect: true },
-                                { answer: "4", isCorrect: false },
-                                { answer: "5", isCorrect: false },
-                            ],
-                        },
-                    ]}
-                    question={QuestionData[1].questions.map((q, idx) => {
-                        return q.question;
-                    })}
-                    isAnswered={answerState}
-                />
-                <StyledAnswerButton
-                    onClick={() => {
-                        setAnswerState((prev) => !prev);
-                    }}
-                >
-                    {answerState ? "뒤로가기" : "답변보기"}
-                </StyledAnswerButton>
+                <h2>To. {state.name}</h2>
+                {guests.length > 0 ? (
+                    <>
+                        {" "}
+                        <Card
+                            cookieId={cookieId}
+                            list={guests.map((guest, idx) => {
+                                return {
+                                    from: guest.name,
+                                    score: guest.score,
+                                    answer: guest.answer,
+                                    comment: guest.comment,
+                                };
+                            })}
+                            question={QuestionData[1].questions.map(
+                                (q, idx) => {
+                                    return q.question;
+                                }
+                            )}
+                            isAnswered={answerState}
+                        />{" "}
+                        <StyledAnswerButton
+                            onClick={() => {
+                                setAnswerState((prev) => !prev);
+                            }}
+                        >
+                            {answerState ? "뒤로가기" : "답변보기"}
+                        </StyledAnswerButton>
+                    </>
+                ) : (
+                    <h4
+                        style={{
+                            fontSize: "2rem",
+                            lineHeight: "10vh",
+                            textAlign: "center",
+                            alignItems: "center",
+                        }}
+                    >
+                        아직 받은 쿠키가 없어요
+                    </h4>
+                )}
+
                 <GoHomeButton />
             </div>
         </StyledContainer>

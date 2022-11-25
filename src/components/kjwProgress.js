@@ -1,16 +1,16 @@
-
-import { useState } from 'react';
-import treeGray from "../img/treeGray.png"
-import treeGreen from "../img/treeGreen.png"
-import treeRed from "../img/treeRed.png"
-
-function KjwProgress(props){
-
+function KjwProgress({ status }) {
     return (
         <>
-            {props.current>props.progress && <img src={require(`../img/treeGray.png`)} />}
-            {props.current<props.progress && <img src={require(`../img/treeGreen.png`)} />}
-            {props.current==props.progress && <img src={require(`../img/treeRed.png`)} />}
+            {status === "correct" ? (
+                <img src={require(`../img/treeGreen.png`)} />
+            ) : null}
+            {status === "uncorrect" ? (
+                <img src={require(`../img/treeRed.png`)} />
+            ) : null}
+
+            {status === "default" ? (
+                <img src={require(`../img/treeGray.png`)} />
+            ) : null}
         </>
     );
 }

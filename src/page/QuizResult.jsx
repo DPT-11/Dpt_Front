@@ -1,24 +1,43 @@
 import "animate.css";
 import React from "react";
 
+import { useLocation } from "react-router";
+import Decoration from "../components/Decoration";
 import KjwResult from "../components/kjwResult";
+import { StyledContainer } from "./Home.style";
 function QuizResult() {
-    let getParameter = (key) => {
-        return new URLSearchParams(window.location.search).get(key);
-    };
-    const name = getParameter("name");
-    const version = getParameter("version");
-    const result = getParameter("result");
-    const shareResult = () => {
-        alert("/quiz/quizResult?name=" + name + "&&" + result);
-    };
+    const { state } = useLocation();
+    const name = state.guestName;
+    const version = state.cookieId;
+    const result = state.score;
+    const guestId = state.guestId;
 
     return (
-        <div className="kjw_body" style={{ height: "120vh" }}>
-            <div className="kjw_main">
-                <KjwResult name={name} version={version} result={result} />
+        <StyledContainer>
+            <Decoration />
+            <div
+                style={{
+                    width: "70%",
+                    height: "30%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginTop: "30%",
+                    paddingBottom: "2rem",
+                }}
+            >
+                <KjwResult
+                    guestName={name}
+                    version={version}
+                    result={result}
+                    guestId={guestId}
+                />
             </div>
-        </div>
+        </StyledContainer>
+        // <div className="kjw_body" style={{ minHeight: "100vh" }}>
+
+        // </div>
     );
 }
 export default QuizResult;

@@ -1,15 +1,15 @@
+import { useNavigate, useParams } from "react-router-dom";
 import home from "../assets/home.png";
-import { useNavigate, useParams } from 'react-router-dom';
 
 function KjwButtonGotoHome() {
     const navigator = useNavigate();
     const params = useParams();
-    const goToHome=()=>{
-        navigator("/"+params.token+"/quiz/");
-    }
+    const goToHome = () => {
+        navigator("/");
+    };
     return (
         <>
-            <img src= {home} onClick={goToHome}/>
+            <img src={home} onClick={goToHome} />
         </>
     );
 }

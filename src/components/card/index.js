@@ -1,8 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import Cookie4 from "../../assets/1.png";
-import Cookie2 from "../../assets/3.png";
-import Cookie1 from "../../assets/4.png";
-import Cookie3 from "../../assets/5.png";
 import CardBg from "../../assets/card.png";
 import LeftArrow from "../../assets/leftIcon.png";
 import RightArrow from "../../assets/rightIcon.png";
@@ -28,7 +24,6 @@ const StyledCardContainer = styled.div`
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
-        height: 40%;
         border: none;
     }
 `;
@@ -83,11 +78,11 @@ const StyledName = styled.p`
     right: 13%;
     bottom: 9%;
     transform: translate(-5%, 0%);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     @media screen and (min-width: 480px) {
-        right: 28%;
+        right: 30%;
         bottom: 15%;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 `;
 
@@ -179,6 +174,9 @@ const StyledAnswerContainer = styled.div`
         font-family: "Noto Sans KR", sans-serif !important;
         font-style: normal;
         font-size: 0.9rem;
+        font-weight: 500;
+        margin-top: 01rem;
+        color: gray;
     }
     h2 {
         position: absolute;
@@ -198,15 +196,15 @@ const StyledAnswerContainer = styled.div`
     p {
         font-family: "Noto Sans KR", sans-serif !important;
         font-style: normal;
+        font-size: 0.8rem;
     }
 `;
 
-export const Card = ({ list, question, isAnswered }) => {
+export const Card = ({ cookieId, list, question, isAnswered }) => {
     const [focusIdx, setFocusIdx] = useState(0);
     const [cookies, setCookieList] = useState(list);
-    const ImgList = [Cookie1, Cookie2, Cookie3, Cookie4];
     useEffect(() => {
-        //console.log(list);
+        console.log(list);
     }, [focusIdx]);
     const total = list.length;
     const from = "";
@@ -217,40 +215,47 @@ export const Card = ({ list, question, isAnswered }) => {
                 <StyledAnswerContainer>
                     <h3>{cookies[focusIdx].from}님의 답안</h3>
                     <ul>
-                        {question.map((i, idx) => (
-                            <>
-                                <li key={i + idx}>{i}</li>
-                                <p
-                                    key={i + list[focusIdx].answer[idx].answer}
-                                    isCorrect={
-                                        list[focusIdx].answer[idx].isCorrect
-                                    }
-                                    style={{
-                                        color: `${
+                        {question.map((i, idx) => {
+                            console.log(list[focusIdx].answer[idx]);
+                            return (
+                                <>
+                                    <li key={i + idx}>
+                                        Q{idx + 1}. {i}
+                                    </li>
+                                    <p
+                                        key={
+                                            i +
+                                            list[focusIdx].answer[idx].option
+                                        }
+                                        isCorrect={
                                             list[focusIdx].answer[idx].isCorrect
-                                                ? "black"
-                                                : "red"
-                                        }`,
-                                    }}
-                                >
-                                    {list[focusIdx].answer[idx].isCorrect
-                                        ? list[focusIdx].answer[idx].answer
-                                        : " 땡!  " +
-                                          list[focusIdx].answer[idx].answer}
-                                </p>
-                            </>
-                        ))}
+                                        }
+                                        style={{
+                                            color: `${
+                                                list[focusIdx].answer[idx]
+                                                    .isCorrect
+                                                    ? "black"
+                                                    : "red"
+                                            }`,
+                                        }}
+                                    >
+                                        {list[focusIdx].answer[idx].isCorrect
+                                            ? list[focusIdx].answer[idx].option
+                                            : list[focusIdx].answer[idx].option}
+                                    </p>
+                                </>
+                            );
+                        })}
                     </ul>
                     <h2>Score {cookies[focusIdx].score}/5</h2>
                 </StyledAnswerContainer>
             ) : (
                 <StyledCardContainer>
                     <StyledArrowWrapper>
-                        <StyledComment>"메리크리스마스"</StyledComment>
+                        <StyledComment>{list[focusIdx].comment}</StyledComment>
                         {focusIdx === 0 ? null : (
                             <StyledLeftArrow
                                 onClick={() => {
-                                    console.log("click left");
                                     setFocusIdx((prev) => prev - 1);
                                 }}
                             />
@@ -266,7 +271,12 @@ export const Card = ({ list, question, isAnswered }) => {
                         <StyledName>From. {cookies[focusIdx].from}</StyledName>
                         <StyledScore>{cookies[focusIdx].score}/5</StyledScore>
                     </StyledArrowWrapper>
-                    <img id="card-cookie-img" src={ImgList[focusIdx]} />
+                    <img
+                        id="card-cookie-img"
+                        src={require(`../../assets/cookie${cookieId}_${cookies[focusIdx].score}.png`)}
+                        alt="쿠키 결과"
+                        style={{ width: "140px" }}
+                    />
                 </StyledCardContainer>
             )}
         </>

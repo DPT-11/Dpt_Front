@@ -106,9 +106,8 @@ export const StyledKaKaoButton = styled.div`
 `;
 
 export const StyledCopyButton = styled(StyledKaKaoButton)`
-    text-decoration: underline;
     background-color: white;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     img {
         margin-top: 0px;
         width: 1.5rem;
@@ -119,4 +118,15 @@ export const StyledCopyButton = styled(StyledKaKaoButton)`
 export const StyledHomeButton = styled.img`
     width: 48px;
     height: 48px;
+`;
+
+export const StyledCommentButton = styled(StyledKaKaoButton)`
+    background-color: ${colors.mainRed};
+    font-size: 1.1rem;
+    color: white;
+    img {
+        margin-top: 0px;
+        width: 1.5rem;
+        left: 6%;
+    }
 `;

@@ -57,8 +57,8 @@ export const AnswerInputField = ({ hint, submitListener }) => {
     );
 };
 
-const InputField = ({ hint, type, initValue, listener, validation }) => {
-    const [input, setInput] = useState(initValue ? initValue : "");
+const InputField = ({ hint, type, value, listener, validation }) => {
+    const [input, setInput] = useState("");
 
     return (
         <StyledInput
@@ -67,11 +67,12 @@ const InputField = ({ hint, type, initValue, listener, validation }) => {
                 e.preventDefault();
                 if (validation(e.target.value)) {
                     listener(e.target.value);
-                    setInput(e.target.value);
+                    //setInput(e.target.value);
                 } else {
                     e.target.value = input;
                 }
             }}
+            value={value}
             placeholder={hint}
         ></StyledInput>
     );

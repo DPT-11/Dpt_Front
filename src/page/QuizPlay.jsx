@@ -1,19 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
+import { requestHostQuiz } from "../api";
 import KjwQuizing from "../components/kwjQuizing";
+import { QuestionData } from "../utils/question";
+import { StyledContainer } from "./Home.style";
 
 function QuizPlay() {
-    const [quiz, setQuiz] = useState({}); // 결과값
-    let getParameter = (key) => {
-        return new URLSearchParams(window.location.search).get(key);
-    };
-    const name = getParameter("name");
+    const { state } = useLocation();
+    const name = state.ownerName;
 
+    const token = state.token;
+    const guest = state.guestName;
+    const cookieId = state.cookieId;
+    const quizList = QuestionData[cookieId - 1].questions.map((q, idx) => {
+        return q.question;
+    });
+    const [optionList, setOptionList] = useState(null);
+    const [answerList, setAnswerList] = useState(null);
+    useEffect(() => {
+        console.log(state);
+        if (name && cookieId && token && guest)
+            requestHostQuiz(token, guest).then((res) => {
+                if (res) {
+                    setOptionList(res.data.data.options);
+                    setAnswerList(res.data.data.answer);
+                }
+            });
+        else {
+            console.log("error");
+        }
+    }, []);
     return (
-        <div className="kjw_body">
-            <div className="kjw_main">
-                <KjwQuizing name={name} quizList={quiz} />
-            </div>
-        </div>
+        <>
+            {optionList && answerList ? (
+                <StyledContainer>
+                    <KjwQuizing
+                        name={name}
+                        quizList={quizList}
+                        optionList={optionList}
+                        answerList={answerList}
+                        cookieId={cookieId}
+                        guestName={guest}
+                    />
+                </StyledContainer>
+            ) : null}
+        </>
     );
 }
 export default QuizPlay;

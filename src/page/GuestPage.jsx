@@ -1,28 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+import { useParams } from "react-router-dom";
+import { requestHostInfo } from "../api/index";
 import KjwStart from "../components/kjwStart";
 
-import axios from "axios";
-import { useEffect, useState } from "react";
-
 function GuestPage() {
-    // 파라미터 값 받아오기
-    // const params = useParams();
-    // console.log(params.token);
     const [user, setUser] = useState(null); // 결과값
     const [loading, setLoading] = useState(false); // 로딩 여부
     const [error, setError] = useState(null); // 에러
+    const { token } = useParams();
 
     const fetchUser = async () => {
         try {
             setUser(null);
             setError(null);
             setLoading(true); //로딩이 시작됨
-            const response = await axios.get(
-                "https://jsonplaceholder.typicode.com/todos/1"
-            );
-            setUser(response.data);
-            console.log(response.data);
+            requestHostInfo(token)
+                .then((res) => {
+                    setUser(res.data.data);
+                })
+                .catch((e) => {
+                    console.log(e);
+                    setError(e);
+                });
         } catch (e) {
+            console.log(e);
             setError(e);
         }
         setLoading(false);
@@ -39,7 +41,11 @@ function GuestPage() {
     return (
         <div className="kjw_body" style={{ height: "120vh" }}>
             <div className="kjw_main">
-                <KjwStart owner={user.userId} />
+                <KjwStart
+                    owner={user.name}
+                    token={token}
+                    cookieId={user.cookieId}
+                />
             </div>
         </div>
     );

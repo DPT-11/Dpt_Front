@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
+import { requestRegist } from "../api/index";
 import { SecondButton } from "../components/button";
 import Decoration from "../components/Decoration";
 import InputField from "../components/inputField";
@@ -24,17 +25,16 @@ const Register = () => {
     }, [inputState]);
 
     const onClickSubmit = () => {
-        // Todo 유저 등록 API
-        //const res = requestRegist(name, pwd);
-        // console.log("result", res);
-        if (true) {
-            console.log(name, pwd);
-            setToken("response");
-            if (token) navigator(`/${token}/cookie`, { state: name });
-        } else {
-            setName("");
-            setPwd("");
-        }
+        requestRegist(name, pwd).then((res) => {
+            console.log(res);
+            if (res.status === 200) {
+                const token = res.data.data.token;
+                if (token) navigator(`/${token}/cookie`, { state: name });
+            } else {
+                setName("");
+                setPwd("");
+            }
+        });
     };
 
     return (

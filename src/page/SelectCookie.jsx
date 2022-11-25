@@ -14,6 +14,7 @@ import Pan from "../assets/pan.png";
 import Right from "../assets/right_glove.png";
 
 import "animate.css";
+import { requestSetCookie } from "../api/index";
 import { DefaultLayout } from "../styles/common";
 import "./SelectCookie.style.css";
 
@@ -46,43 +47,21 @@ const SelectCookie = () => {
         // axios.post({ token: token, cookieId: selectedCookie }).then((res) => {
         //     res = { ...res.data };
         // });
-        setTimeout(() => {
-            setButtonstate(false);
-        }, 1000);
-        setTimeout(() => {
-            navigator(`/${token}/question`, {
-                state: {
-                    res: [
-                        {
-                            questionId: 1,
-                            question: "무슨 영화",
-                            options: ["멜로1", "스릴러", "코미디"], //예시 답안
+        requestSetCookie(token, selectedCookie).then((res) => {
+            console.log(res);
+            if (res.status === 200) {
+                setTimeout(() => {
+                    setButtonstate(false);
+                }, 1000);
+                setTimeout(() => {
+                    navigator(`/${token}/question`, {
+                        state: {
+                            cookieId: selectedCookie,
                         },
-                        {
-                            questionId: 2,
-                            question: "무슨 노래1",
-                            options: ["멜로2", "스릴러", "코미디"],
-                        },
-                        {
-                            questionId: 3,
-                            question: "무슨 노래3",
-                            options: ["멜로3", "스릴러", "코미디"],
-                        },
-                        {
-                            questionId: 4,
-                            question: "무슨 노래4",
-                            options: ["멜로4", "스릴러", "코미디"],
-                        },
-                        {
-                            questionId: 5,
-                            question: "무슨 노래5",
-                            options: ["멜로5", "스릴러", "코미디"],
-                        },
-                    ],
-                    cookieId: selectedCookie,
-                },
-            });
-        }, 7000);
+                    });
+                }, 7000);
+            }
+        });
     };
 
     const animateCSS = (element, animation, prefix = "animate__") =>
