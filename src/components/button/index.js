@@ -151,6 +151,7 @@ export const GoHomeButton = () => {
     const navigator = useNavigate();
     return (
         <StyledHomeButton
+            className="btn"
             src={HomeImg}
             onClick={() => {
                 navigator("/");

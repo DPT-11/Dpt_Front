@@ -200,6 +200,12 @@ export const StyledContainer = styled.div`
         font-size: 24px;
         line-height: 38px;
     }
+    .btn {
+        :hover {
+            filter: brightness(0.7);
+            transform: scale(1.1);
+        }
+    }
 `;
 
 export const AnimateText = styled.p`

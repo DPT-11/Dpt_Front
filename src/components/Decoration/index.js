@@ -29,7 +29,7 @@ const StyledDecorationAnimateDiv = styled.div`
     height: 15rem;
     display: flex;
     flex-direction: row;
-    top: -3rem;
+    top: -4rem;
     justify-content: space-around;
 
     div {

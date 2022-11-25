@@ -19,8 +19,6 @@ function KjwStart(props) {
                 <KjwStartContent name={props.owner} />
                 <div
                     style={{
-                        width: "100%",
-                        alignItem: "left",
                         marginBottom: "70px",
                     }}
                 >

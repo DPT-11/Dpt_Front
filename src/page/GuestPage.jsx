@@ -39,7 +39,7 @@ function GuestPage() {
     if (!user) return null; //users값이 유효하지 않는 경우
 
     return (
-        <div className="kjw_body" style={{ minHeight: "100vh" }}>
+        <div className="kjw_body" style={{ minHeight: "110vh" }}>
             <div className="kjw_main">
                 <KjwStart
                     owner={user.name}

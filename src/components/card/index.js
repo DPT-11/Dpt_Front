@@ -18,9 +18,9 @@ const StyledCardContainer = styled.div`
 
     img {
         position: absolute;
-        left: 50%;
+        left: 51%;
         top: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%) matrix(1, -0.06, 0.06, 1, 0, 0);
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
@@ -47,8 +47,8 @@ const StyledRightArrow = styled(StyledArrow)`
     top: 50%;
     transform: translate(-10%, -50%);
     @media screen and (min-width: 480px) {
-        right: 25%;
-        transform: translate(-25%, -50%);
+        right: 28%;
+        transform: translate(-28%, -50%);
     }
 `;
 
@@ -61,8 +61,8 @@ const StyledLeftArrow = styled(StyledArrow)`
     height: 35px;
 
     @media screen and (min-width: 480px) {
-        left: 30%;
-        transform: translate(-27%, -50%);
+        left: 33%;
+        transform: translate(-33%, -50%);
     }
 `;
 
@@ -70,7 +70,6 @@ const StyledArrowWrapper = styled.div`
     width: 100%;
     height: 100%;
     transform: matrix(1, -0.06, 0.06, 1, 0, 0);
-    z-index: 0;
 `;
 
 const StyledName = styled.p`
@@ -95,8 +94,8 @@ const StyledScore = styled.p`
     width: 55%;
     text-align: center;
     @media screen and (min-width: 480px) {
-        top: 10%;
-        left: 25%;
+        top: 12%;
+        left: 27%;
     }
 `;
 
