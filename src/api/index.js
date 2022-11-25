@@ -1,7 +1,7 @@
 import axios from "axios";
 const Api = axios.create({
-    // baseURL: "https://your-christmas-quiz.herokuapp.com", //"http://localhost:8000",
-    baseURL: "http://localhost:8000",
+    baseURL: process.env.REACT_APP_BASE_URL,
+    // baseURL: "http://localhost:8000",
     timeout: 30000,
     params: {},
     headers: {
@@ -14,8 +14,6 @@ export const requestRegist = async (name, pwd) => {
     return Api.post("host/register", {
         name: name,
         password: pwd,
-    }).catch((error) => {
-        console.log(error);
     });
 };
 

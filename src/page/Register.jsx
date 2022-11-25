@@ -5,6 +5,7 @@ import { requestRegist } from "../api/index";
 import { SecondButton } from "../components/button";
 import Decoration from "../components/Decoration";
 import InputField from "../components/inputField";
+import { StyledToastContainer, Toast } from "../components/toast";
 import { DefaultLayout } from "../styles/common";
 import { StyledContainer } from "./Home.style";
 
@@ -25,16 +26,23 @@ const Register = () => {
     }, [inputState]);
 
     const onClickSubmit = () => {
-        requestRegist(name, pwd).then((res) => {
-            console.log(res);
-            if (res.status === 200) {
-                const token = res.data.data.token;
-                if (token) navigator(`/${token}/cookie`, { state: name });
-            } else {
+        requestRegist(name, pwd)
+            .then((res) => {
+                console.log(res.data);
+                if (res.status === 200) {
+                    const token = res.data.data.token;
+                    if (token) navigator(`/${token}/cookie`, { state: name });
+                } else {
+                    setName("");
+                    setPwd("");
+                }
+            })
+            .catch((error) => {
+                console.log(error);
                 setName("");
                 setPwd("");
-            }
-        });
+                Toast(error.response.data.message);
+            });
     };
 
     return (
@@ -48,7 +56,7 @@ const Register = () => {
                     <InputField
                         hint={"이름을 입력해주세요"}
                         type={"textField"}
-                        initValue={""}
+                        value={name}
                         listener={setName}
                         validation={(value) => {
                             return value.length < 11;
@@ -61,7 +69,7 @@ const Register = () => {
                     <InputField
                         hint={"숫자 4자리를 입력해주세요"}
                         type={"password"}
-                        initValue={""}
+                        value={pwd}
                         listener={(value) => {
                             setPwd(
                                 value
@@ -95,6 +103,7 @@ const Register = () => {
                     />
                 </div>
             </StyledContainer>
+            <StyledToastContainer toastColor={"black"} />
         </DefaultLayout>
     );
 };
