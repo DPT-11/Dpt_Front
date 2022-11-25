@@ -1,8 +1,6 @@
 import { requestUpdateComment } from "../api/index";
-import { CommentButton } from "./button";
-import KjwButtonCopy from "./kjwButtonCopy";
+import { CommentButton, CopyButton, KakaoSahreButton } from "./button";
 import KjwButtonGotoHome from "./kjwButtonGotoHome";
-import KjwButtonKakao from "./kjwButtonKakao";
 import KjwResultCookie from "./kjwResultCookie";
 import { Toast } from "./toast";
 import { StyledToastContainer } from "./toast/index";
@@ -54,9 +52,17 @@ function KjwResult(props) {
                 inputFocus={false}
             />
             <span style={{ height: "19px" }} />
-            <KjwButtonCopy />
+            <CopyButton
+                url={"https://your-christmas-cookie.netlify.app"}
+                onClick={() => {
+                    Toast("링크 복사 완료");
+                }}
+            />
+
             <span style={{ height: "19px" }} />
-            <KjwButtonKakao name={props.name} result={props.result} />
+            <KakaoSahreButton url={"https://your-christmas-cookie.netlify.app"}>
+                공유하기
+            </KakaoSahreButton>
             <span style={{ height: "49px" }} />
             <KjwButtonGotoHome />
             <StyledToastContainer toastColor={"black"} />

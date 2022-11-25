@@ -3,7 +3,7 @@ import { CopyButton } from "./button";
 function KjwButtonCopy() {
     const handleCopyClipBoard = async () => {
         try {
-            let url = window.document.location.href;
+            let url = "https://your-christmas-cookie.netlify.app";
             await navigator.clipboard.writeText(url);
         } catch (error) {
             alert("복사 실패!");
@@ -14,7 +14,7 @@ function KjwButtonCopy() {
     return (
         <CopyButton
             id="btn"
-            url="https://christmasquiz.com"
+            url="https://your-christmas-cookie.netlify.app"
             onClick={handleCopyClipBoard}
         />
     );

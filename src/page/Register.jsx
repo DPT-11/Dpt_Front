@@ -35,13 +35,14 @@ const Register = () => {
                 } else {
                     setName("");
                     setPwd("");
+                    Toast("중복된 사용자가 있습니다");
                 }
             })
             .catch((error) => {
                 console.log(error);
                 setName("");
                 setPwd("");
-                Toast(error.response.data.message);
+                Toast("중복된 사용자가 있습니다");
             });
     };
 

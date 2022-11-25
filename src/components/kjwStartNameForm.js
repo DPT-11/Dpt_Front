@@ -1,27 +1,26 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function KjwStartNameForm(props) {
     const formCss = {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        fontFamily: "Noto Sans KR sans-serif",
     };
     const inputCss = {
         width: "327px",
         height: "50px",
         backgroundColor: "#FFF0E7",
-        border: "solid 3px #B3ACAC",
+        border: "solid 2px #B3ACAC",
         borderRadius: "20px",
-        fontFamily: "'Gamja Flower', cursive",
-        fontSize: "24px",
+        fontFamily: "'Noto Sans KR', sans-serif !important",
+        fontSize: "1.2rem",
         placeHolderColor: "#B7B0B0",
         color: "black",
         marginBottom: "24px",
         textAlign: "center",
     };
 
-    const navigator = useNavigate();
     const [input, setInput] = useState("");
 
     const submit = (event) => {
@@ -44,6 +43,7 @@ function KjwStartNameForm(props) {
                 placeholder={props.placeholder}
                 required
             />
+
             <button
                 className="kjwStartBtn"
                 disabled={!input}

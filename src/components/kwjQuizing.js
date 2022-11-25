@@ -33,6 +33,7 @@ function KjwQuizing(props) {
         flexDirection: "column",
         width: "80%",
         gap: "1rem",
+        marginBottom: "2rem",
     };
 
     const quizList = props.quizList;

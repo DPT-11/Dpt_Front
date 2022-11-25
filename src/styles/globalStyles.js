@@ -2,7 +2,6 @@ import { createGlobalStyle, css } from "styled-components";
 import reset from "styled-reset";
 import colors from "./colors";
 
-
 const customReset = css`
     *,
     *::before,
@@ -79,12 +78,7 @@ const GlobalStyle = createGlobalStyle`
   ${reset}
   ${customReset}
   @font-face {
-    /* font-family: 'Gamja Flower', cursive !important;
-    src: url('../src/font/GamjaFlower-Regular.ttf') format('ttf'),url('../src/font/GamjaFlower-Regular.woff') format('woff'),url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap'); */
-    
-    /* font-family: 'Gamja Flower', cursive !important; */
-    /* font-family: 'NanumSeHwaCe'!important; */
-    //src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_08@1.0/Mugunghwa.woff') format('woff');
+   
     font-family: 'Gamja Flower', cursive !important;
     font-weight: 400;
     font-style: normal;
